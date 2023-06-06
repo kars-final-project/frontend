@@ -8,6 +8,14 @@ export const GlobalStyle = createGlobalStyle `
         list-style: none;
         text-decoration: none;
     }
+    .container{
+        height: 100%;
+        width: 90%;
+        max-width: 1600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;    
+    }
 
     :root {
         --color-brand-1: #4529E6;

@@ -6,14 +6,7 @@ height: 80px;
 display: flex;
 justify-content: center;
 align-items: center;
-.container{
-    height: 100%;
-    width: 80%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-}
+
 .container-go-login{
     height: 100%;
     border-left: 1px solid var(--color-grey-6);
