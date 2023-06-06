@@ -61,14 +61,14 @@ function FilterList () {
             </section>
             <section>
                 <h2>Km</h2>
-                <div>
+                <div className="max-min-button">
                     <button>Minima</button>
                     <button>Máxima</button>
                 </div>
             </section>
             <section>
                 <h2>Preço</h2>
-                <div>
+                <div className="max-min-button">
                     <button>Minima</button>
                     <button>Máxima</button>
                 </div>

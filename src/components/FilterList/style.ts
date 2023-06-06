@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledFilterList = styled.div `
-   display: flex;
+   display: none;
    flex-direction: column;
    gap: 20px;
    width: 454px;
@@ -11,7 +11,7 @@ const StyledFilterList = styled.div `
    section {
        display: flex;
        flex-direction: column;
-       gap: 15px;
+       gap: 25px;
    }
 
    section h2 {
@@ -26,7 +26,25 @@ const StyledFilterList = styled.div `
    section div {
        display: flex;
        flex-direction: column;
-       margin-left: 10px;
+       margin-left: 20px;
+   }
+
+   .max-min-button {
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       gap: 15px;
+   }
+
+   .max-min-button button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 125px;
+      height: 37px;
+      left: 17px;
+      top: 1045px;
+      background-color: var(--color-grey-5);
    }
 
    section div > button {
@@ -40,6 +58,10 @@ const StyledFilterList = styled.div `
        font-size: 1.25rem;
        color: var(--color-grey-3);
        cursor: pointer;
+   }
+
+   @media (min-width: 938px) {
+       display: flex;
    }
 `
 
