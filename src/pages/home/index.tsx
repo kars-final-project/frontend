@@ -1,6 +1,8 @@
 import Header from '../../components/header/index'
 import React from 'react'
 import { StyledHome } from './style'
+import CarCard from '../../components/CarCard'
+import FilterList from '../..//components/FilterList'
 import Footer from '../../components/footer/index'
 
 function Home() {
@@ -10,6 +12,10 @@ function Home() {
         <div className='bigImg'>
           <h1>Motors Shop</h1>
           <p>A melhor plataforma de anúncios de carros do país</p>
+        </div>
+        <div className='cards-filters'>
+            <FilterList/>
+            <CarCard/>
         </div>
         <Footer/>
     </StyledHome>

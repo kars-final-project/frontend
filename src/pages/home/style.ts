@@ -2,6 +2,16 @@ import styled from "styled-components";
 import Car from "./car.png";
 
 export const StyledHome = styled.main`
+  .cards-filters {
+      display: flex;
+      width: 100%;
+      margin-top: 50px;
+      padding: 0 40px;
+      justify-content: space-between;
+  }
+
+  
+
   .bigImg {
     position: relative;
     width: 100%;
