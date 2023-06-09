@@ -6,6 +6,10 @@ height: 80px;
 display: flex;
 justify-content: center;
 align-items: center;
+z-index: 0;
+position: relative;
+top: 0px;
+background-color: var(--color-grey-10);
 
 .container-go-login{
     height: 100%;
@@ -25,5 +29,6 @@ align-items: center;
 }
 .link-login{
     color: var(--color-grey-2);
+    border: 1px solid transparent
 }
 `

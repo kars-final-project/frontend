@@ -112,7 +112,7 @@ const StyledCards = styled.ul `
       justify-content: center;
       gap: 20px;
       width: 100%;
-      top: 840px;
+      top: 720px;
    }
 
    .pages button {
