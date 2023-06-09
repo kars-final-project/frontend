@@ -196,10 +196,6 @@ function CarCard () {
                     <p>R$ 00.000,00</p>
                 </div>
             </li>
-            <div className="pages">
-               <span>1 de 2</span>
-               <button>Seguinte {">"}</button>
-            </div>
         </StyledCards>
     )
 }

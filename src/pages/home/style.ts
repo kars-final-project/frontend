@@ -2,15 +2,64 @@ import styled from "styled-components";
 import Car from "./car.png";
 
 export const StyledHome = styled.main`
-  .cards-filters {
-      display: flex;
-      width: 100%;
-      margin-top: 50px;
-      padding: 0 40px;
-      justify-content: space-between;
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
-  
+  .cards-filters {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 5%;
+    justify-content: space-between;
+  }
+
+  .filter-button {
+     margin: 0 auto;
+     width: 279px;
+     max-width: 100%;
+     height: 48px;
+     background-color: var(--color-brand-2);
+     border: 1.5px solid var(--color-brand-2);
+     border-radius: 4px;
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 1rem;
+     color: var(--color-white-fixed);
+     cursor: pointer;
+  }
+
+  .pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      margin-top: 80px;
+   }
+
+   .pages button {
+      background: none;
+      margin-left: 15px;
+      border: none;
+      color: var(--color-brand-2);
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: "Lexend";
+      cursor: pointer;
+   }
+
+   .pages span {
+       font-family: 'Lexend';
+       font-weight: 600;
+       font-size: 1.5rem;
+       line-height: 30px;
+       color: var(--color-grey-3);
+   }
 
   .bigImg {
     position: relative;
@@ -48,5 +97,20 @@ export const StyledHome = styled.main`
         margin-top: 50px;
     }
   }
+
+  @media (min-width: 938px) {
+    .filter-button {
+      display: none;
+    }
+
+    .pages {
+      flex-direction: row;
+      margin-top: 20px;
+    }
+
+    .card-container {
+       max-width: 1032px;
+    }
+   }
 
 `;

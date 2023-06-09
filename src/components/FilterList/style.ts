@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
-const StyledFilterList = styled.div `
-   display: none;
-   flex-direction: column;
-   gap: 20px;
-   width: 454px;
-   padding: 0 15px;
-   min-width: 250px;
+interface iPropsStyled {
+    showFilter: boolean
+}
 
+const StyledFilterList = styled.div <iPropsStyled> `
+   display: ${ props => props.showFilter ? "flex" : "none"};
+   flex-direction: column;
+   margin-top: 55px;
+   width: 100%;
+   gap: 20px;
+   
    section {
        display: flex;
        flex-direction: column;
        gap: 25px;
+       max-width: 100%;
    }
 
    section h2 {
@@ -27,6 +31,7 @@ const StyledFilterList = styled.div `
        display: flex;
        flex-direction: column;
        margin-left: 20px;
+       max-width: 100%;
    }
 
    .max-min-button {
@@ -34,6 +39,7 @@ const StyledFilterList = styled.div `
        flex-direction: row;
        align-items: center;
        gap: 15px;
+       max-width: 100%;
    }
 
    .max-min-button button {
@@ -60,8 +66,39 @@ const StyledFilterList = styled.div `
        cursor: pointer;
    }
 
+   .see-ads-button {
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       padding: 12px 28px;
+       gap: 10px;
+       width: 279px;
+       height: 48px;
+       background-color: var(--color-brand-2);
+       border: 1.5px solid var(--color-brand-2);
+       border-radius: 4px;
+       max-width: 100%;
+       font-family: 'Inter';
+       font-style: normal;
+       font-weight: 600;
+       font-size: 1rem;
+       line-height: 0px;
+       color: var(--color-white-fixed);
+       cursor: pointer;
+   }
+
    @media (min-width: 938px) {
        display: flex;
+       position: static;
+       width: 454px;
+       align-items: baseline;
+       margin: 0;
+       min-width: 250px;
+
+       .see-ads-button {
+          display: none;
+       }
    }
 `
 
