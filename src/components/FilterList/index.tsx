@@ -1,8 +1,12 @@
 import StyledFilterList from "./style";
 
-function FilterList () {
+interface iFilterListProps {
+    showFilter: boolean
+}
+
+function FilterList ({ showFilter }: iFilterListProps){
     return (
-        <StyledFilterList>
+        <StyledFilterList showFilter={showFilter}>
             <section>
                 <h2>Marca</h2>
                 <div>
@@ -73,6 +77,7 @@ function FilterList () {
                     <button>Máxima</button>
                 </div>
             </section>
+            <button className="see-ads-button">Ver anúncios</button>
         </StyledFilterList>
     )
 }
