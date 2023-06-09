@@ -5,16 +5,15 @@ const StyledCards = styled.ul `
    gap: 30px;
    max-width: 1153px;
    overflow-x: auto;
-   margin-bottom: 80px;
 
    li {
        display: flex;
        flex-direction: column;
        width: 312px; 
-       min-width: 252px;
+       min-width: 280px;
        gap: 10px;
        height: 360px;
-       flex-basis: calc(33.33% - 20px);
+       flex-basis: calc(32.33% - 20px);
    }
 
    h3 {
@@ -103,6 +102,35 @@ const StyledCards = styled.ul `
       font-size: var(--color-grey-1);
       line-height: 20px;
       color: var(--color-grey-1);
+   }
+
+   .pages {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      top: 720px;
+   }
+
+   .pages button {
+      background: none;
+      border: none;
+      color: var(--color-brand-2);
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: "Lexend";
+      cursor: pointer;
+   }
+
+   .pages span {
+       font-family: 'Lexend';
+       font-weight: 600;
+       font-size: 1.5rem;
+       line-height: 30px;
+       color: var(--color-grey-3);
    }
 
    @media (min-width: 938px) {
