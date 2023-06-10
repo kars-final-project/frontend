@@ -73,6 +73,7 @@ export const StyledHome = styled.main`
     justify-content: center;
     align-items: center;
     gap: 50px;
+    z-index: -1;
 
     &::before {
       content: "";
