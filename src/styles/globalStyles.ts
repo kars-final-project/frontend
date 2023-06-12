@@ -16,6 +16,10 @@ export const GlobalStyle = createGlobalStyle `
         justify-content: space-between;
         align-items: center;    
     }
+    button {
+        border: 2px solid transparent;
+        cursor: pointer;
+    }
 
     :root {
         --color-brand-1: #4529E6;

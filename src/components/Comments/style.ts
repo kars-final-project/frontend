@@ -11,8 +11,9 @@ export const StyledComments = styled.section `
         align-items: flex-start;
         padding: 36px 44px;
         gap: 24px;
-        width: 751px;
-        max-width: 100%;
+        max-width: 751px;
+        max-height: 300px;
+        overflow-x: scroll;
         background: var(--color-grey-10);
         border-radius: 4px;
     }
@@ -115,6 +116,7 @@ export const StyledComments = styled.section `
         max-width: 100%;
         border: 1.5px solid var(--color-grey-7);
         border-radius: 4px;
+        position: relative;
     }
 
     .comment-input textarea {
@@ -132,6 +134,7 @@ export const StyledComments = styled.section `
         font-weight: 400;
         font-size: 1rem;
         color: var(--color-grey-3);
+        
     }
 
     .comment-input button {
@@ -146,6 +149,9 @@ export const StyledComments = styled.section `
         font-size: 0.875rem;
         color: var(--color-white-fixed);
         cursor: pointer;
+        position: absolute;
+        left: 45%;
+        bottom: 7%;
     }
 
     .suggestions {
@@ -165,5 +171,16 @@ export const StyledComments = styled.section `
         font-weight: 500;
         font-size: 0.75rem;
         color: var(--color-grey-3);
+    }
+    
+    @media (min-width:425px){
+        .comment-input button{
+            left: 60%;
+        }
+    }
+    @media (min-width:768px){
+        .comment-input button{
+            left: 80%;
+        }
     }
 `
