@@ -14,10 +14,10 @@ function Header() {
   return (
     <StyledHeader showContainer={showContainer}>
         <div className='container'>
-            <img src={Logo} alt="" />
+            <Link to={'/'}><img src={Logo} alt="" /></Link>
             <div className='container-go-login'>
-                <Link to={''} className='link-login'>Fazer Login</Link>
-                <button>Cadastrar</button>
+                <Link to={'/login'} className='link-login'>Fazer Login</Link>
+                <Link to={'/register'}>Cadastrar</Link>
             </div>
             <button onClick={openContainer} className='more-button'><img src={bars}/></button>
         </div>

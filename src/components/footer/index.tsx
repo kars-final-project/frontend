@@ -8,7 +8,7 @@ function Footer() {
             <img src={LogoFooter} alt="" />
             <p>© 2022 -  Todos os direitos reservados.</p>
             <div className='up'>
-                <p>^</p>
+                <a href='#'>^</a>
             </div>
         </div>
     </StyledFooter>
