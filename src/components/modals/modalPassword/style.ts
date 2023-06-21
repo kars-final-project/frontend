@@ -40,6 +40,7 @@ export const StyledModalPassword = styled.div`
           color: var(--color-white-fixed);
           font-size: 16px;
           font-weight: 600;
+          border-radius: 4px;
         }
       }
     }

@@ -4,6 +4,7 @@ import Product from '../pages/product/index'
 import Login from '../pages/login/index'
 import Register from '../pages/register/index'
 import Dashboard from '../pages/dashboard/index'
+import RecoverPassword from '../pages/recoverPassword/index'
 
 function RoutesMotor() {
 	return (
@@ -27,6 +28,10 @@ function RoutesMotor() {
 			<Route
 				path='/dashboard'
 				element={<Dashboard />}
+			/>
+			<Route
+				path='/recoverPassword'
+				element={<RecoverPassword/>}
 			/>
 		</Routes>
 	)
