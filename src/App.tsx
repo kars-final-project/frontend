@@ -1,13 +1,14 @@
-import Home from "./pages/home"
-import RoutesMotor from "./routes"
+import { AdsProvider } from 'contexts/ads.context'
+import RoutesMotor from './routes'
 
 function App() {
-
-  return (
-    <>
-      <RoutesMotor/>
-    </>
-  )
+	return (
+		<>
+			<AdsProvider>
+				<RoutesMotor />
+			</AdsProvider>
+		</>
+	)
 }
 
 export default App

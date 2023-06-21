@@ -4,14 +4,14 @@ import Header from '../../components/header/index'
 import Footer from '../../components/footer/index'
 import Input from '../../components/input/index'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { LoginData, schema } from './validator'
+import { LoginData, loginSchema } from '../../schemas/users.schema'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { localAPI } from '../../services/index'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
-        resolver: zodResolver(schema)
+        resolver: zodResolver(loginSchema)
     })
 
     const navigate = useNavigate()
