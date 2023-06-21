@@ -1,4 +1,4 @@
-import { AdsProvider } from 'contexts/ads.context'
+import { AdsProvider } from './contexts/ads.context'
 import RoutesMotor from './routes'
 
 function App() {
