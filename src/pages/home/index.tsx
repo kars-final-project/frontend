@@ -1,5 +1,5 @@
 import Header from '../../components/header/index'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { StyledHome } from './style'
 import CarCard from '../../components/CarCard'
 import FilterList from '../..//components/FilterList'

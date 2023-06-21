@@ -1,12 +1,15 @@
+import AuthProvider from './contexts/auth.context'
 import { AdsProvider } from './contexts/ads.context'
 import RoutesMotor from './routes'
 
 function App() {
 	return (
 		<>
-			<AdsProvider>
-				<RoutesMotor />
-			</AdsProvider>
+			<AuthProvider>
+				<AdsProvider>
+					<RoutesMotor />
+				</AdsProvider>
+			</AuthProvider>
 		</>
 	)
 }

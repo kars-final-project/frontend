@@ -8,11 +8,14 @@ import { LoginData, loginSchema } from '../../schemas/users.schema'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { localAPI } from '../../services/index'
+import { useAuth } from '../../contexts/auth.context'
+import ModalPassword from '../../components/modals/modalPassword/index'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema)
     })
+    const { modalPassword, setModalPassword} = useAuth();
 
     const navigate = useNavigate()
 
@@ -58,7 +61,7 @@ const Login = () => {
                                 error={errors['password']?.message}
                                 disabled={false}
                                 />
-                            <a>Esqueci minha senha</a>
+                            <p onClick={()=>setModalPassword(true)}>Esqueci minha senha</p>
                         </div>
                         </div>
                     <div className='div-buttons'>
@@ -68,6 +71,7 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+            {modalPassword && <ModalPassword/>}
         <Footer />
         </StyledLogin>
     )

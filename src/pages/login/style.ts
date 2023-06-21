@@ -54,15 +54,16 @@ export const StyledLogin = styled.main`
                     display: flex;
                     flex-direction: column;
                     gap: 0.5625rem;
-                    a {
+                    p {
                         font-family: 'Inter';
                         font-style: normal;
                         font-weight: 500;
                         font-size: 0.875rem;
                         line-height: 1.5rem;
                         color: var(--color-grey-2);
-                        text-align: right;
+                        text-align: left;
                         width: 100%;
+                        cursor: pointer;
                     }
                 }
             }
