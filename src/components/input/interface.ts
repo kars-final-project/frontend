@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form"
 
-type tRegister = "name" | "email" | "phone" | "password" | "cpf" | "birthday" | "description" | "type" | "zip_code" | "state" | "city" | "street" | "number" | "complement"
+type tRegister = "name" | "email" | "phone" | "password" | "cpf" | "birthday" | "description" | "type" | "zip_code" | "state" | "city" | "street" | "number" | "complement" | "confirmPassword"
 
 
 export interface iInput {

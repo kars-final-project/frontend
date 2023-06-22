@@ -32,6 +32,26 @@ export const registerSchema = z.object({
 	complement: z.string().nonempty('Complemento é obrigatório'),
 })
 
+export const sendEmailSchema = z.object({
+	email: z
+		.string()
+		.email('Deve ser um e-mail')
+		.nonempty('E-mail é obrigatório')
+})
+
+export const passwordRecoverySchema = z.object({
+	password: z.string().nonempty('Senha é obrigatória').min(8, "A senha conter no minimo 8 caracteres"),
+	confirmPassword: z.string().nonempty('Senha é obrigatória')
+})
+.refine((data) => data.password === data.confirmPassword, {
+    message: 'As senhas não correspondem',
+    path: ['confirmPassword']
+});
+
+export type iPasswordRecovery = z.infer<typeof passwordRecoverySchema>
+
+export type iSendEmail = z.infer<typeof sendEmailSchema>
+
 export type RegisterData = z.infer<typeof registerSchema>
 
 export const responseUserSchema = registerSchema
