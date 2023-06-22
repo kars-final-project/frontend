@@ -31,6 +31,30 @@ export const StyledModalPassword = styled.div`
         flex-direction: column;
         gap: 25px;
 
+        p {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1rem;
+        }
+
+        .erro-password-recovery {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1rem;
+          color: var(--color-alert-1);
+          margin: 0;
+        }
+
+        small {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1rem;
+          color: var(--color-alert-1);
+        }
+
         button {
           cursor: pointer;
           width: 100%;

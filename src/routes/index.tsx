@@ -30,7 +30,7 @@ function RoutesMotor() {
 				element={<Dashboard />}
 			/>
 			<Route
-				path='/recoverPassword'
+				path='/recoverPassword/:token'
 				element={<RecoverPassword/>}
 			/>
 		</Routes>

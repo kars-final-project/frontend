@@ -7,5 +7,5 @@ export const karsAPI = axios.create({
 
 export const localAPI = axios.create({
   baseURL: "http://localhost:3000/",
-  timeout: 3000,
+  timeout: 10000,
 });
