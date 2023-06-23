@@ -32,6 +32,15 @@ export const registerSchema = z.object({
 	complement: z.string().nonempty('Complemento é obrigatório'),
 })
 
+export const updateUserSchema = z.object({
+	name: z.string().nonempty("Este campo não pode esta vazio"),
+	email: z.string().email("Deve ser um e-mail").nonempty("Este campo não pode esta vazio"),
+	cpf: z.string().nonempty("Este campo não pode esta vazio"),
+	phone: z.string().nonempty("Este campo não pode esta vazio"),
+	birthday: z.string().nonempty("Este campo não pode esta vazio"),
+	description: z.string().nonempty("Este campo não pode esta vazio")
+})
+
 export const sendEmailSchema = z.object({
 	email: z
 		.string()
@@ -47,6 +56,8 @@ export const passwordRecoverySchema = z.object({
     message: 'As senhas não correspondem',
     path: ['confirmPassword']
 });
+
+export type iUpdateUser = z.infer<typeof updateUserSchema>
 
 export type iPasswordRecovery = z.infer<typeof passwordRecoverySchema>
 
