@@ -77,10 +77,10 @@ export interface iAdValues {
 	getAdsById: unknown
 	sellerAds: iAd[]
 	getSellerAds: () => void
-	createAd: unknown
-	updateAd: unknown
-	deleteAd: unknown
-	updateAdStatus: unknown
+	createAd: any
+	updateAd: any
+	deleteAd: any
+	updateAdStatus: any
 	setShowNewAdState: () => void
 }
 

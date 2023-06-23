@@ -16,6 +16,7 @@ interface Props {
     sendEmail: (data: iSendEmail) => void
     passwordRecovery: (data: iPasswordRecovery, token: string) => void
     updateUser: (data: iUpdateUser, id: string) => void
+    loading: boolean
   }
   
   const AuthContext = createContext<authProviderData>({} as authProviderData);
@@ -23,24 +24,45 @@ interface Props {
   function AuthProvider({ children }: Props) {
     const [modalPassword, setModalPassword] = useState(false);
     const [modalUpdateUser, setModalUpdateUser] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
     async function sendEmail(data: iSendEmail) {
       try {
+          setLoading(true)
           const response = await localAPI.post("/users/resetPassword", data)
           setModalPassword(false)
+          toast.success("Email enviado com sucesso", {
+            autoClose: 1000
+          })
       } catch (error) {
+          toast.error("Usuario não encontrado", {
+            autoClose: 1000
+          })
           console.log(error)
+      } finally {
+          setLoading(false)
       }
     }
 
     async function passwordRecovery(data: iPasswordRecovery, token: string) {
       try {
+          setLoading(true)
           const response = await localAPI.patch(`/users/resetPassword/${token}`, data)
-          navigate("/login")
+          toast.success("Senha alterada com sucesso", {
+            autoClose: 1000
+          })
+          setTimeout(() => {
+            navigate("/login")
+          }, 500);
       } catch (error) {
+          toast.error("Não foi possivel alterar a senha", {
+            autoClose: 1000
+          })
           console.log(error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -72,6 +94,7 @@ interface Props {
           sendEmail,
           passwordRecovery,
           updateUser,
+          loading,
         }}
       >
           {children}
