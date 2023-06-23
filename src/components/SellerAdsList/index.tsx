@@ -10,7 +10,7 @@ export const SellerAdsList = () => {
 	return (
 		<>
 			{sellerAds.map((ad: iAd) => {
-				<SoloAdCard
+				return <SoloAdCard
 					brand={ad.brand}
 					price={ad.price}
 					fuel={ad.fuel}
