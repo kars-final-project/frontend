@@ -12,7 +12,7 @@ import { useAuth } from "../../contexts/auth.context";
 import  Input  from "../../components/input"
 
 function RecoverPassword() {
-  const { passwordRecovery } = useAuth();
+  const { passwordRecovery, loading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -55,7 +55,7 @@ function RecoverPassword() {
             disabled={false}
           />
           <button type="submit" className="button-brand">
-            Alterar senha
+              {loading ? (<div className="spinner"></div>) : "Alterar senha"}
           </button>
         </form>
       </div>
