@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledSection = styled.section`
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   flex-wrap: wrap;
@@ -14,17 +14,6 @@ export const StyledSection = styled.section`
     width: 100vw;
     display: flex;
     gap: 15px;
-
-    .divAdvertisement {
-      margin-top: 275px;
-      margin-bottom: 75px;
-      max-width: 100%;
-    }
-    .divPurpleBackground {
-      height: 357px;
-      background-color: #4529e6;
-      width: 100vw;
-    }
   }
 
   .pictures {
@@ -69,4 +58,10 @@ export const StyledSection = styled.section`
       right: 143px;
     }
   }
-`;
+`
+
+export const StyledBack = styled.div`
+  height: 360px;
+  background-color: var(--color-brand-1);
+  width: 100vw;
+`

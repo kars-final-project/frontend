@@ -1,23 +1,30 @@
 import Footer from '../../components/footer/index'
 import Header from '../../components/header/index'
-import { StyledSection } from './styles'
+import { StyledSection, StyledBack } from './styles'
 import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { NewAdModal } from '../../components/modals/newAdModal'
+import { SellerAdsList } from '../../components/SellerAdsList'
 
 const Dashboard = () => {
-	const { sellerAds, showNewAdForm, setShowNewAdState } =
+	const { sellerAds, getSellerAds, showNewAdForm, setShowNewAdState } =
 		useContext(AdsContext)
 
+	getSellerAds()
 	return (
 		<StyledSection>
-			<Header />
+			<div>
+				<Header />
+				<StyledBack/>
+			</div>
 			<main>
 				<div className='divAdvertisement'>
 					{sellerAds.length === 0 ? (
-						<div />
+						<div>
+							<h3> Esta conta ainda não criou anúncios </h3>
+						</div>
 					) : (
-						<section />
+						<SellerAdsList />
 					)}
 				</div>
 			</main>
