@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { iAd, iAdStatus, iAdValues, iAdsProps } from '../interfaces/ads.interfaces'
 import { localAPI } from '../services/index'
+import { toast } from 'react-toastify'
 
 export const AdsContext = createContext({} as iAdValues)
 
@@ -76,7 +77,9 @@ export const AdsProvider = ({
 					Authorization: `Bearer ${jwtToken}`,
 				},
 			})
-
+			toast.success("Anuncio criado com sucesso", {
+				autoClose: 1000
+			})
 			return response.data
 		} catch (error) {
 			console.error('Erro ao criar o anúncio', error)
