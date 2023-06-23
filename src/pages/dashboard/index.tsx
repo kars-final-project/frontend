@@ -3,9 +3,10 @@ import Header from '../../components/header/index'
 import { StyledSection } from './styles'
 import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
+import { NewAdModal } from '../../components/modals/newAdModal'
 
 const Dashboard = () => {
-	const { sellerAds, showNewAdForm } =
+	const { sellerAds, showNewAdForm, setShowNewAdState } =
 		useContext(AdsContext)
 
 	return (
@@ -20,9 +21,11 @@ const Dashboard = () => {
 					)}
 				</div>
 			</main>
+			<button onClick={setShowNewAdState}> Criar anúncio </button>
+			{showNewAdForm && <NewAdModal />}
 			<Footer />
-			{showNewAdForm}
 		</StyledSection>
 	)
 }
+
 export default Dashboard
