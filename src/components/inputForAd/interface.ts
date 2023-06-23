@@ -8,10 +8,12 @@ type tRegister =
 	| 'color'
 	| 'year'
 	| 'description'
-	| 'table_price'
+	| 'fipe_list_price'
 	| 'price'
 	| 'is_active'
 	| 'cover_image'
+	| 'gallery_image_1'
+	| 'gallery_image_2'
     
 
 export interface iInput {

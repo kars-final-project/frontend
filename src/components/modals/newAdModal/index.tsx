@@ -3,9 +3,9 @@ import { AdsContext } from '../../../contexts/ads.context'
 import Input from '../../inputForAd/index'
 import { FormNewAd } from './styles'
 import { useForm } from 'react-hook-form'
-import { carAdSchema } from '../../../schemas/ads.schema'
+import { sellerCarAdSchema } from '../../../schemas/ads.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { iAd } from '../../../interfaces/ads.interfaces'
+import { iSellerAd } from '../../../interfaces/ads.interfaces'
 
 export const NewAdModal = () => {
 	const { setShowNewAdState, createAd, getSellerAds } = useContext(AdsContext)
@@ -14,11 +14,9 @@ export const NewAdModal = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<iAd>({ resolver: zodResolver(carAdSchema) })
+	} = useForm<iSellerAd>({ resolver: zodResolver(sellerCarAdSchema) })
 
 	const onSubmit = async (data: any) => {
-		data.price = parseInt(data.price)
-		data.table_price = parseInt(data.table_price)
 		await createAd(data)
 		setShowNewAdState()
 		getSellerAds()
@@ -117,15 +115,15 @@ export const NewAdModal = () => {
 
 					<div className='divTwoInputs'>
 						<Input
-							id='table_price'
+							id='fipe_list_price'
 							type='text'
 							placeholder='48000'
 							label='Preço tabela FIPE'
-							register={register('table_price')}
+							register={register('fipe_list_price')}
 						/>
-						{errors.table_price && (
+						{errors.fipe_list_price && (
 							<span className='alert-span'>
-								{errors.table_price.message}
+								{errors.fipe_list_price.message}
 							</span>
 						)}
 
@@ -166,6 +164,32 @@ export const NewAdModal = () => {
 					{errors.cover_image && (
 						<span className='alert-span'>
 							{errors.cover_image.message}
+						</span>
+					)}
+
+					<Input 
+						id='gallery_image_1'
+						type='text'
+						placeholder='https://image.com/01'
+						label='Imagem da galeira'
+						register={register('gallery_image_1')}
+					/>
+					{errors.gallery_image_1 && (
+						<span className='alert-span'>
+							{errors.gallery_image_1.message}
+						</span>
+					)}
+
+					<Input 
+						id='gallery_image_2'
+						type='text'
+						placeholder='https://image.com/02'
+						label='Imagem da galeira'
+						register={register('gallery_image_2')}
+					/>
+					{errors.gallery_image_2 && (
+						<span className='alert-span'>
+							{errors.gallery_image_2.message}
 						</span>
 					)}
 

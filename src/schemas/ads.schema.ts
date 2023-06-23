@@ -8,11 +8,17 @@ export const carAdSchema = z.object({
 	color: z.string().max(45),
 	description: z.string().max(45),
 	year: z.string().max(4),
-	table_price: z.number().or(z.string()),
+	fipe_list_price: z.number().or(z.string()),
 	price: z.number().or(z.string()),
 	is_active: z.boolean().optional().default(true),
 	cover_image: z.string(),
 })
+
+export const sellerCarAdSchema = carAdSchema
+	.extend({
+		gallery_image_1: z.string(),
+		gallery_image_2: z.string()
+	})
 
 export type carAdData = z.infer<typeof carAdSchema>
 
