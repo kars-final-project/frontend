@@ -6,15 +6,16 @@ import Input from '../../components/input/index'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginData, loginSchema } from '../../schemas/users.schema'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
+import { localAPI } from '../../services'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema)
     })
-    const { modalPassword, setModalPassword, submitLogin} = useAuth();
+    const { modalPassword, setModalPassword} = useAuth();
 
     const navigate = useNavigate()
 

@@ -152,7 +152,7 @@ interface Props {
           submitDelete,
           submitLogin,
           submitRegister,
-          setType
+          setType,
           loading,
         }}
       >
