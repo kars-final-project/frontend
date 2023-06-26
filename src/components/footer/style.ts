@@ -13,6 +13,11 @@ p{
 }
 a{
     color: var(--color-white-fixed);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .up {
     background: var(--color-grey-1);

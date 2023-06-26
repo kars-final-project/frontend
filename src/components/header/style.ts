@@ -54,6 +54,24 @@ background-color: var(--color-grey-10);
         font-weight: 600;
         font-size: 1rem;
     }
+    .user-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0;
+    color: var(--color-grey-2);
+        div {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9.375rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-brand-1);
+            color: var(--color-white-fixed);
+        }
+    }
 }
 .link-login{
     color: var(--color-grey-2);

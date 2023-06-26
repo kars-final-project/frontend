@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyledRegister } from './style'
 import Header from '../../components/header/index'
 import Footer from '../../components/footer/index'
 import Input from '../../components/input/index'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { localAPI } from '../../services/index'
-import { useNavigate } from 'react-router-dom'
 import { RegisterData, registerSchema } from '../../schemas/users.schema'
+import { useAuth } from '../../contexts/auth.context'
 
 const Register = () => {
 	const {
@@ -18,18 +17,7 @@ const Register = () => {
 		resolver: zodResolver(registerSchema),
 	})
 
-	const navigate = useNavigate()
-
-	const [type, setType] = useState('COMPRADOR')
-
-	async function submitRegister(data: RegisterData) {
-		try {
-			await localAPI.post('/users', { ...data, type: type })
-			navigate('/login')
-		} catch (error) {
-			console.error(error)
-		}
-	}
+	const { submitRegister, setType } = useAuth();
 
 	return (
 		<StyledRegister>
@@ -175,15 +163,6 @@ const Register = () => {
 						error={errors['password']?.message}
 						disabled={false}
 					/>
-					{/* <Input
-                        id='type'
-                        label='tipo'
-                        placeholder="Digitar senha"
-                        type="type"
-                        register={register('type')}
-                        error={errors['type']?.message}
-                        disabled={false}
-                    /> */}
 					{/* <Input
                         id='password'
                         label='Confirmar Senha'
