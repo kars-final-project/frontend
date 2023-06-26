@@ -3,6 +3,7 @@ import { localAPI } from '../services/index';
 import { iSendEmail, iPasswordRecovery, iUpdateUser, LoginData, RegisterData } from 'schemas/users.schema';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { iUserResponse } from '../interfaces/user.interface';
 
 interface Props {
     children: ReactNode;
@@ -22,6 +23,7 @@ interface Props {
     submitLogin(data: LoginData): Promise<void>
     submitRegister(data: RegisterData): Promise<void>
     setType: React.Dispatch<React.SetStateAction<string>>
+    loading: boolean
   }
 
   interface UserData {
@@ -42,6 +44,7 @@ interface Props {
     const [modalUpdateUser, setModalUpdateUser] = useState(false)
     const [user, setUser] = useState<UserData>({} as UserData)
     const [type, setType] = useState('COMPRADOR')
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -80,24 +83,44 @@ interface Props {
 
     async function sendEmail(data: iSendEmail) {
       try {
+          setLoading(true)
           const response = await localAPI.post("/users/resetPassword", data)
           setModalPassword(false)
+          toast.success("Email enviado com sucesso", {
+            autoClose: 1000
+          })
       } catch (error) {
+          toast.error("Usuario não encontrado", {
+            autoClose: 1000
+          })
           console.log(error)
+      } finally {
+          setLoading(false)
       }
     }
 
     async function passwordRecovery(data: iPasswordRecovery, token: string) {
       try {
+          setLoading(true)
           const response = await localAPI.patch(`/users/resetPassword/${token}`, data)
-          navigate("/login")
+          toast.success("Senha alterada com sucesso", {
+            autoClose: 1000
+          })
+          setTimeout(() => {
+            navigate("/login")
+          }, 500);
       } catch (error) {
+          toast.error("Não foi possivel alterar a senha", {
+            autoClose: 1000
+          })
           console.log(error)
+      } finally {
+        setLoading(false)
       }
     }
 
     async function updateUser(data: iUpdateUser, id: string) {
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("@kars_login")
 
       try {
         const response = await localAPI.patch(`/users/${id}`, data, {
@@ -130,6 +153,7 @@ interface Props {
           submitLogin,
           submitRegister,
           setType
+          loading,
         }}
       >
           {children}

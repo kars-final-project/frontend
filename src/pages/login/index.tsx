@@ -16,6 +16,24 @@ const Login = () => {
     })
     const { modalPassword, setModalPassword, submitLogin} = useAuth();
 
+    const navigate = useNavigate()
+
+    async function submitLogin(data: LoginData) {
+        console.log(data)
+        try {
+            const response = await localAPI.post("/login", data)
+      
+            const { token } = response.data
+      
+            localAPI.defaults.headers.common.authorization = `Bearer ${token}`
+            localStorage.setItem("@kars_login", token)
+      
+            navigate('/')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <StyledLogin>
         <Header />

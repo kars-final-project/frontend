@@ -26,6 +26,9 @@ export const StyledRecoverPassword = styled.main`
       gap: 24px;
 
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
         width: 100%;
         padding: 12px 0px;

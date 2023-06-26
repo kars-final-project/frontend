@@ -77,11 +77,25 @@ export interface iAdValues {
 	getAdsById: unknown
 	sellerAds: iAd[]
 	getSellerAds: () => void
-	createAd: unknown
-	updateAd: unknown
-	deleteAd: unknown
-	updateAdStatus: unknown
+	createAd: any
+	updateAd: any
+	deleteAd: any
+	updateAdStatus: any
 	setShowNewAdState: () => void
+	filterBrand: string[]
+	setFilterBrand: React.Dispatch<React.SetStateAction<string[]>>
+	filterModel: string[]
+	setFilterModel: React.Dispatch<React.SetStateAction<string[]>>
+	filterColor: string[]
+	setFilterColor: React.Dispatch<React.SetStateAction<string[]>>
+	filterYear: string[]
+	setFilterYear: React.Dispatch<React.SetStateAction<string[]>>
+	filterFuel: string[]
+	setFilterFuel: React.Dispatch<React.SetStateAction<string[]>>
+	filterKm: string
+	setFilterKm: React.Dispatch<React.SetStateAction<string>>
+	filterPrice: string
+	setFilterPrice: React.Dispatch<React.SetStateAction<string>>
 }
 
 

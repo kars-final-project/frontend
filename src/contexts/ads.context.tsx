@@ -2,11 +2,19 @@ import { createContext, useEffect, useState } from 'react'
 import { iAd, iAdStatus, iAdValues, iAdsProps } from '../interfaces/ads.interfaces'
 import { localAPI } from '../services/index'
 
+
 export const AdsContext = createContext({} as iAdValues)
 
 export const AdsProvider = ({
 	children,
 }: iAdsProps) => {
+	const [filterBrand, setFilterBrand] = useState<string[]>([])
+	const [filterColor, setFilterColor] = useState<string[]>([])
+	const [filterYear, setFilterYear] = useState<string[]>([])
+	const [filterKm, setFilterKm] = useState<string>("")
+	const [filterPrice, setFilterPrice] = useState<string>("")
+	const [filterFuel, setFilterFuel] = useState<string[]>([])
+	const [filterModel, setFilterModel] =useState<string[]>([])
 	const [showNewAdForm, setShowNewAdForm] =
 		useState<boolean>(false)
 
@@ -27,7 +35,7 @@ export const AdsProvider = ({
 
 	const getAllAdsArray = async () => {
 		try {
-			const response = await localAPI.get<iAd[]>('advertisement')
+			const response = await localAPI.get<iAd[]>('advertisements')
 			setallAdsArray(response.data)
 		} catch (error) {
 			console.error('Erro ao obter os anúncios', error)
@@ -39,7 +47,7 @@ export const AdsProvider = ({
 			const jwtToken = localStorage.getItem('@kars_login')
 			if (!jwtToken) return
 
-			const response = await localAPI.get<iAd>(`advertisement/${id}`, {
+			const response = await localAPI.get<iAd>(`advertisements/${id}`, {
 				headers: {
 					Authorization: `Bearer ${jwtToken}`,
 				},
@@ -55,7 +63,7 @@ export const AdsProvider = ({
 			const jwtToken = localStorage.getItem('@kars_login')
 			if (!jwtToken) return
 
-			const response = await localAPI.get<iAd[]>(`advertisement/seller`, {
+			const response = await localAPI.get<iAd[]>(`advertisements`, {
 				headers: {
 					Authorization: `Bearer ${jwtToken}`,
 				},
@@ -71,7 +79,7 @@ export const AdsProvider = ({
 			const jwtToken = localStorage.getItem('@kars_login')
 			if (!jwtToken) return
 
-			const response = await localAPI.post('advertisement', body, {
+			const response = await localAPI.post('advertisements', body, {
 				headers: {
 					Authorization: `Bearer ${jwtToken}`,
 				},
@@ -79,7 +87,7 @@ export const AdsProvider = ({
 
 			return response.data
 		} catch (error) {
-			console.error('Erro ao atualizar o anúncio', error)
+			console.error('Erro ao criar o anúncio', error)
 		}
 	}
 
@@ -89,7 +97,7 @@ export const AdsProvider = ({
 			if (!jwtToken) return
 
 			const response = await localAPI.patch<iAd>(
-				`advertisement/${id}`,
+				`advertisements/${id}`,
 				body,
 				{
 					headers: {
@@ -110,7 +118,7 @@ export const AdsProvider = ({
 			if (!jwtToken) return
 
 			const response = await localAPI.patch<iAdStatus>(
-				`advertisement/status/${id}`,
+				`advertisements/status/${id}`,
 				body,
 				{
 					headers: {
@@ -129,7 +137,7 @@ export const AdsProvider = ({
 			const jwtToken = localStorage.getItem('@kars_login')
 			if (!jwtToken) return
 
-			await localAPI.delete(`advertisement/${id}`, {
+			await localAPI.delete(`advertisements/${id}`, {
 				headers: {
 					Authorization: `Bearer ${jwtToken}`,
 				},
@@ -154,6 +162,20 @@ export const AdsProvider = ({
 				updateAdStatus,
 				deleteAd,
 				setShowNewAdState,
+				filterBrand,
+				setFilterBrand,
+				filterColor,
+				setFilterColor,
+				filterYear,
+				setFilterYear,
+				filterKm,
+				setFilterKm,
+				filterPrice,
+				setFilterPrice,
+				filterFuel,
+				setFilterFuel,
+				filterModel,
+				setFilterModel,
 			}}
 		>
 			{children}

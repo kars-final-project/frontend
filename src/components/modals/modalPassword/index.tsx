@@ -8,7 +8,7 @@ import Input from "../../input/index";
 
 
 function ModalPassword() {
-  const { setModalPassword, sendEmail } = useAuth();
+  const { setModalPassword, sendEmail, loading } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm<iSendEmail>({
     resolver: zodResolver(sendEmailSchema)
   })
@@ -27,7 +27,7 @@ function ModalPassword() {
           <form onSubmit={handleSubmit(submit)} noValidate>
             <p>Informe seu e-mail para enviarmos o link de recuperação</p>
             <Input id='email' label='Email' placeholder="Digitar email" type="email" register={register('email')} error={errors['email']?.message} disabled={false}/>
-            <button type='submit'>Enviar link</button>
+            <button type='submit'>{loading ? (<p className="spinner"></p>) : "Enviar email"}</button>
           </form>
         </div>
       </div>

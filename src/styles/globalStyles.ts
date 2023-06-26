@@ -61,4 +61,21 @@ export const GlobalStyle = createGlobalStyle `
         --color-random-12: #30007D;
     }
 
+    .spinner {
+        width: 25px;
+        height: 25px;
+        border: 4px solid;
+        border-radius: 50%;
+        border-color: black #e6e6e6 #e6e6e6 #e6e6e6;
+        animation: loading 0.3s infinite;
+    }
+    @keyframes loading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
 `
