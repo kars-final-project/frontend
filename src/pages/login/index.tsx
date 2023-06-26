@@ -27,7 +27,7 @@ const Login = () => {
             const { token } = response.data
       
             localAPI.defaults.headers.common.authorization = `Bearer ${token}`
-            localStorage.setItem("token", token)
+            localStorage.setItem("@kars_login", token)
       
             navigate('/')
         } catch (error) {

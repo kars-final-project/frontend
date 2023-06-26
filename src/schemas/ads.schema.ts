@@ -8,8 +8,8 @@ export const carAdSchema = z.object({
 	color: z.string().max(45),
 	description: z.string().max(45),
 	year: z.string().max(4),
-	table_price: z.number(),
-	price: z.number(),
+	table_price: z.number().or(z.string()),
+	price: z.number().or(z.string()),
 	is_active: z.boolean().optional().default(true),
 	cover_image: z.string(),
 })

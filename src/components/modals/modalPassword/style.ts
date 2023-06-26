@@ -57,6 +57,9 @@ export const StyledModalPassword = styled.div`
 
         button {
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           padding: 12px 0px;
           background-color: var(--color-brand-1);
