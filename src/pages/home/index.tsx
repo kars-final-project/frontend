@@ -20,6 +20,8 @@ function Home() {
   } = useContext(AdsContext);
   const [showFilter, setShowFilter] = useState(false);
 
+  console.log(sellerAds)
+
   let adsFitlered = sellerAds.filter(
     (item) =>
       (filterBrand.length === 0 ||

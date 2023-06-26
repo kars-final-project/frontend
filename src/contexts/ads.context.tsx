@@ -60,14 +60,7 @@ export const AdsProvider = ({
 
 	const getSellerAds = async () => {
 		try {
-			const jwtToken = localStorage.getItem('@kars_login')
-			if (!jwtToken) return
-
-			const response = await localAPI.get<iAd[]>(`advertisements`, {
-				headers: {
-					Authorization: `Bearer ${jwtToken}`,
-				},
-			})
+			const response = await localAPI.get<iAd[]>(`advertisements`)
 			setSellerAds(response.data)
 		} catch (error) {
 			console.error('Erro ao obter os anúncios', error)
