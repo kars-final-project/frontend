@@ -16,8 +16,18 @@ export const StyledHome = styled.main`
     justify-content: space-between;
   }
 
+  h5 {
+       font-family: 'Lexend';
+       font-weight: 600;
+       font-size: 1.5rem;
+       line-height: 30px;
+       color: var(--color-grey-1);
+       margin: 0 auto;
+  }
+
   .filter-button {
      margin: 0 auto;
+     margin-top: 30px;
      width: 279px;
      max-width: 100%;
      height: 48px;

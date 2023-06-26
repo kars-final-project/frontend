@@ -16,7 +16,7 @@ function FilterModal ({ closeModal, showFilter }: iPropsModal) {
                         <button onClick={closeModal}>X</button>
                     </div>
                 </div>
-                <FilterList showFilter={showFilter}/>
+                <FilterList closeModal={closeModal} showFilter={showFilter}/>
             </div>
         </StyledModal>
     )

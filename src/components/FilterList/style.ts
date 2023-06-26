@@ -88,6 +88,15 @@ const StyledFilterList = styled.div <iPropsStyled> `
        cursor: pointer;
    }
 
+   .selected {
+       color: var(--color-random-10);
+       transition: 0.3s;
+   }
+
+   .selected-box {
+       color: var(--color-random-10);
+    }
+
    @media (min-width: 938px) {
        display: flex;
        position: static;

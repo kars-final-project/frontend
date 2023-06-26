@@ -9,10 +9,10 @@ const StyledCards = styled.ul `
    li {
        display: flex;
        flex-direction: column;
+       justify-content: space-between;
        width: 312px; 
        min-width: 280px;
        gap: 10px;
-       height: 360px;
        flex-basis: calc(32.33% - 20px);
    }
 
@@ -29,6 +29,7 @@ const StyledCards = styled.ul `
        width: 100%;
        height: 152px;
        background-color: var(--color-grey-7);
+       object-fit: cover;
    }
 
    .car-description {

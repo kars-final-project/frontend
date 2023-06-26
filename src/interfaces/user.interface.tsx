@@ -16,3 +16,14 @@ export interface iUserContext {
 	registerUser: (data: iLogin) => Promise<void>
 	setUser: Dispatch<SetStateAction<iUserReturn | null>>
 }
+
+export interface iUserResponse {
+	id: number,
+	name: string,
+	email: string,
+	cpf: string,
+	phone: string,
+	birthday: string,
+	type: string,
+	reset_token: string | null
+}

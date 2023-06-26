@@ -1,203 +1,56 @@
-import  StyledCards  from "./style"
+import { useAuth } from "../../contexts/auth.context";
+import { useState, useEffect } from "react"
+import StyledCards from "./style";
+import { localAPI } from "../../services";
 
-function CarCard () {
-    return (
-        <StyledCards>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-            <li>
-                <img className="car-image" src="" alt="" />
-                <h3>Porsche - 718</h3>
-                <p className="car-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate necessitatibus delectus esse nisi id, magnam officiis similique quasi nostrum nobis accusamus molestiae natus! Dignissimos earum, recusandae provident quibusdam quos molestiae.</p>
-                <div className="user-info">
-                    <img className="user-image" src="" alt="" />
-                    <h4>Samuel Leão</h4>
-                </div>
-                <div className="more-info">
-                    <div>
-                        <span>0 KM</span>
-                        <span>2019</span>
-                    </div>
-                    <p>R$ 00.000,00</p>
-                </div>
-            </li>
-        </StyledCards>
-    )
+function CarCard({ ads }: any) {
+  const [users, setUsers] = useState<any>([])
+
+  useEffect(() => {
+    async function getUsers() {
+      try {
+        const userIds = ads.map((ad: any) => localAPI.get(`/users/${ad.user_id}`));
+  
+        const responses = await Promise.all(userIds);
+        const usersData = responses.map(response => response.data);
+  
+        setUsers(usersData);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+    getUsers();
+  },[ads])
+
+  return (
+    <StyledCards>
+      {ads.map((ad: any) => {
+        const user = users.find((user: any) => user.id === ad.user_id)
+
+        return (
+          <li>
+            <img className="car-image" src={ad.cover_image} alt="Imagem do carro" />
+            <h3>{ad.model}</h3>
+            <p className="car-description">
+              {ad.description}
+            </p>
+            <div className="user-info">
+              <img className="user-image" src="" alt="" />
+              <h4>{user?.name}</h4>
+            </div>
+            <div className="more-info">
+              <div>
+                <span>{ad.mileage} KM</span>
+                <span>{ad.year}</span>
+              </div>
+              <p>{Number(ad.price).toLocaleString("pt-br", { style: "currency", currency: "BRL", })}</p>
+            </div>
+          </li>
+        )
+      })}
+    </StyledCards>
+  );
 }
 
-export default CarCard
+export default CarCard;
