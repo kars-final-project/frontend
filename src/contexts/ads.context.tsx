@@ -2,11 +2,19 @@ import { createContext, useEffect, useState } from 'react'
 import { iAd, iAdStatus, iAdValues, iAdsProps } from '../interfaces/ads.interfaces'
 import { localAPI } from '../services/index'
 
+
 export const AdsContext = createContext({} as iAdValues)
 
 export const AdsProvider = ({
 	children,
 }: iAdsProps) => {
+	const [filterBrand, setFilterBrand] = useState<string[]>([])
+	const [filterColor, setFilterColor] = useState<string[]>([])
+	const [filterYear, setFilterYear] = useState<string[]>([])
+	const [filterKm, setFilterKm] = useState<string>("")
+	const [filterPrice, setFilterPrice] = useState<string>("")
+	const [filterFuel, setFilterFuel] = useState<string[]>([])
+	const [filterModel, setFilterModel] =useState<string[]>([])
 	const [showNewAdForm, setShowNewAdForm] =
 		useState<boolean>(false)
 
@@ -55,7 +63,7 @@ export const AdsProvider = ({
 			const jwtToken = localStorage.getItem('@kars_login')
 			if (!jwtToken) return
 
-			const response = await localAPI.get<iAd[]>(`advertisements/seller`, {
+			const response = await localAPI.get<iAd[]>(`advertisements`, {
 				headers: {
 					Authorization: `Bearer ${jwtToken}`,
 				},
@@ -154,6 +162,20 @@ export const AdsProvider = ({
 				updateAdStatus,
 				deleteAd,
 				setShowNewAdState,
+				filterBrand,
+				setFilterBrand,
+				filterColor,
+				setFilterColor,
+				filterYear,
+				setFilterYear,
+				filterKm,
+				setFilterKm,
+				filterPrice,
+				setFilterPrice,
+				filterFuel,
+				setFilterFuel,
+				filterModel,
+				setFilterModel,
 			}}
 		>
 			{children}

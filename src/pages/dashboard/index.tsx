@@ -4,6 +4,7 @@ import { StyledSection } from './styles'
 import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { NewAdModal } from '../../components/modals/newAdModal'
+import UpdateUserModal from '../../components/modals/modalUpdateUser'
 
 const Dashboard = () => {
 	const { sellerAds, showNewAdForm, setShowNewAdState } =
@@ -24,6 +25,7 @@ const Dashboard = () => {
 			<button onClick={setShowNewAdState}> Criar anúncio </button>
 			{showNewAdForm && <NewAdModal />}
 			<Footer />
+			< UpdateUserModal/>
 		</StyledSection>
 	)
 }

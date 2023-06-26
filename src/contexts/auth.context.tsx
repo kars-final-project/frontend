@@ -3,6 +3,7 @@ import { localAPI } from '../services/index';
 import { iSendEmail, iPasswordRecovery, iUpdateUser } from 'schemas/users.schema';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { iUserResponse } from '../interfaces/user.interface';
 
 interface Props {
     children: ReactNode;
@@ -67,7 +68,7 @@ interface Props {
     }
 
     async function updateUser(data: iUpdateUser, id: string) {
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("@kars_login")
 
       try {
         const response = await localAPI.patch(`/users/${id}`, data, {
