@@ -1,16 +1,27 @@
 import Footer from '../../components/footer/index'
 import Header from '../../components/header/index'
-import { StyledSection, StyledBack, StyledUser, StyledImgCircle, StyledRow, StyledH2, StyledH3, StyledP, StyledAddAdBtn } from './styles'
+import {
+	StyledSection,
+	StyledBack,
+	StyledUser,
+	StyledImgCircle,
+	StyledRow,
+	StyledH2,
+	StyledH3,
+	StyledP,
+} from './styles'
 import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
-import { NewAdModal } from '../../components/modals/newAdModal'
 import { SellerAdsList } from '../../components/SellerAdsList'
+import { useParams } from 'react-router-dom'
 
-const Dashboard = () => {
-	const { sellerAds, getSellerAds, showNewAdForm, setShowNewAdState } =
-		useContext(AdsContext)
+const PublicDashboard = () => {
+	const { sellerAds, getSellerAds } = useContext(AdsContext)
 
-	getSellerAds()
+	const params = useParams()
+
+	const id = params.id
+
 	return (
 		<StyledSection>
 			<div>
@@ -22,8 +33,12 @@ const Dashboard = () => {
 						<StyledH2> Samuel Leão </StyledH2>
 						<StyledH3> Anunciante </StyledH3>
 					</StyledRow>
-					<StyledP> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s </StyledP>
-					<StyledAddAdBtn onClick={setShowNewAdState}> Criar anúncio </StyledAddAdBtn>
+					<StyledP>
+						{' '}
+						Lorem Ipsum is simply dummy text of the printing and
+						typesetting industry. Lorem Ipsum has been the
+						industry's standard dummy text ever since the 1500s{' '}
+					</StyledP>
 				</StyledUser>
 			</div>
 			<main>
@@ -37,10 +52,9 @@ const Dashboard = () => {
 					)}
 				</div>
 			</main>
-			{showNewAdForm && <NewAdModal />}
 			<Footer />
 		</StyledSection>
 	)
 }
 
-export default Dashboard
+export default PublicDashboard

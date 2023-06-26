@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { AdsContext } from '../../../contexts/ads.context'
 import Input from '../../inputForAd/index'
-import { FormNewAd } from './styles'
+import { StyledForm } from './styles'
 import { useForm } from 'react-hook-form'
 import { sellerCarAdSchema } from '../../../schemas/ads.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,7 +24,7 @@ export const NewAdModal = () => {
 
 	return (
 		<div>
-			<FormNewAd
+			<StyledForm
 				noValidate
 				onSubmit={handleSubmit(onSubmit)}
 			>
@@ -208,7 +208,7 @@ export const NewAdModal = () => {
 						</button>
 					</div>
 				</div>
-			</FormNewAd>
+			</StyledForm>
 		</div>
 	)
 }
