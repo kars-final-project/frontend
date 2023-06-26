@@ -29,9 +29,9 @@ function Home() {
       (filterColor.length === 0 ||
         filterColor.includes(item.color.toLowerCase())) &&
       (filterFuel.length === 0 ||
-        filterFuel.includes(item.year.toLowerCase())) &&
+        filterFuel.includes(item.fuel.toLowerCase())) &&
       (filterModel.length === 0 ||
-        filterModel.includes(item.year.toLowerCase()))
+        filterModel.includes(item.model.toLowerCase()))
   );
 
   if (filterKm === "min") {
