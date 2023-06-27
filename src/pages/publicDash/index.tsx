@@ -14,6 +14,7 @@ import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { SellerAdsList } from '../../components/SellerAdsList'
 import { useParams } from 'react-router-dom'
+import ModalEditAddress from '../../components/modals/modalEditAddress/index'
 
 const PublicDashboard = () => {
 	const { sellerAds, getSellerAds } = useContext(AdsContext)
@@ -52,6 +53,7 @@ const PublicDashboard = () => {
 					)}
 				</div>
 			</main>
+			<ModalEditAddress/>
 			<Footer />
 		</StyledSection>
 	)
