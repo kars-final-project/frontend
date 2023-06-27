@@ -3,11 +3,19 @@ import { iAd, iAdStatus, iAdValues, iAdsProps } from '../interfaces/ads.interfac
 import { localAPI } from '../services/index'
 import { toast } from 'react-toastify'
 
+
 export const AdsContext = createContext({} as iAdValues)
 
 export const AdsProvider = ({
 	children,
 }: iAdsProps) => {
+	const [filterBrand, setFilterBrand] = useState<string[]>([])
+	const [filterColor, setFilterColor] = useState<string[]>([])
+	const [filterYear, setFilterYear] = useState<string[]>([])
+	const [filterKm, setFilterKm] = useState<string>("")
+	const [filterPrice, setFilterPrice] = useState<string>("")
+	const [filterFuel, setFilterFuel] = useState<string[]>([])
+	const [filterModel, setFilterModel] =useState<string[]>([])
 	const [showNewAdForm, setShowNewAdForm] =
 		useState<boolean>(false)
 
@@ -53,14 +61,7 @@ export const AdsProvider = ({
 
 	const getSellerAds = async () => {
 		try {
-			const jwtToken = localStorage.getItem('@kars_login')
-			if (!jwtToken) return
-
-			const response = await localAPI.get<iAd[]>(`advertisements/seller`, {
-				headers: {
-					Authorization: `Bearer ${jwtToken}`,
-				},
-			})
+			const response = await localAPI.get<iAd[]>(`advertisements`)
 			setSellerAds(response.data)
 		} catch (error) {
 			console.error('Erro ao obter os anúncios', error)
@@ -157,6 +158,20 @@ export const AdsProvider = ({
 				updateAdStatus,
 				deleteAd,
 				setShowNewAdState,
+				filterBrand,
+				setFilterBrand,
+				filterColor,
+				setFilterColor,
+				filterYear,
+				setFilterYear,
+				filterKm,
+				setFilterKm,
+				filterPrice,
+				setFilterPrice,
+				filterFuel,
+				setFilterFuel,
+				filterModel,
+				setFilterModel,
 			}}
 		>
 			{children}

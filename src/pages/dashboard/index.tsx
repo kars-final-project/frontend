@@ -4,7 +4,7 @@ import { StyledSection, StyledBack, StyledUser, StyledImgCircle, StyledRow, Styl
 import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { NewAdModal } from '../../components/modals/newAdModal'
-import { SellerAdsList } from '../../components/SellerAdsList'
+import UpdateUserModal from '../../components/modals/modalUpdateUser'
 
 const Dashboard = () => {
 	const { sellerAds, getSellerAds, showNewAdForm, setShowNewAdState } =
@@ -39,6 +39,7 @@ const Dashboard = () => {
 			</main>
 			{showNewAdForm && <NewAdModal />}
 			<Footer />
+			< UpdateUserModal/>
 		</StyledSection>
 	)
 }

@@ -7,9 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginData, loginSchema } from '../../schemas/users.schema'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { localAPI } from '../../services/index'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
+import { localAPI } from '../../services'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
