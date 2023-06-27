@@ -5,6 +5,7 @@ import Login from '../pages/login/index'
 import Register from '../pages/register/index'
 import Dashboard from '../pages/dashboard/index'
 import RecoverPassword from '../pages/recoverPassword/index'
+import PublicDashboard from '../pages/publicDash'
 
 function RoutesMotor() {
 	return (
@@ -32,6 +33,10 @@ function RoutesMotor() {
 			<Route
 				path='/recoverPassword/:token'
 				element={<RecoverPassword/>}
+			/>
+			<Route
+				path='/publicdash/:id'
+				element={<PublicDashboard/>}
 			/>
 		</Routes>
 	)

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const FormNewAd = styled.form`
+export const StyledForm = styled.form`
   background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
-  trasform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
   border-radius: 8px;
   overflow-y: scroll;
+  z-index: 10;
 
   .divTitleAndCloseButton {
     display: flex;

@@ -15,6 +15,49 @@ export const StyledSection = styled.section`
     display: flex;
     gap: 15px;
   }
+
+  .pictures {
+    width: 95vw;
+    height: 330px;
+    background-color: white;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+
+    h2,
+    p {
+      margin: 20px 0 0 20px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      height: 100%;
+    }
+
+    li {
+      width: 32%;
+    }
+
+    img {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .pictures {
+      display: flex;
+      position: absolute;
+      top: 106px;
+      width: 25vw;
+      right: 143px;
+    }
+  }
 `
 
 export const StyledBack = styled.div`
