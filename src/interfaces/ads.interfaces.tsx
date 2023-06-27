@@ -8,6 +8,11 @@ export interface CardsProps {
 	arr: iAdsArray | iOrderedPartialAdsArray
 }
 
+export interface iSellerAd extends iAd {
+	gallery_image_1: string;
+	gallery_image_2: string;
+}
+
 export interface iCar {
 	id: string;
 	name: string;
