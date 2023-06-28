@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { NewAdModal } from '../../components/modals/newAdModal'
 import UpdateUserModal from '../../components/modals/modalUpdateUser'
+import { SellerAdsList } from '../../components/SellerAdsList/index'
 
 const Dashboard = () => {
 	const { sellerAds, getSellerAds, showNewAdForm, setShowNewAdState } =
