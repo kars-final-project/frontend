@@ -49,25 +49,38 @@ interface Props {
     const navigate = useNavigate()
 
     async function submitLogin(data: LoginData) {
-      console.log(data)
       try {
           const response = await localAPI.post("/login", data)
-    
           const { token } = response.data
-    
           localAPI.defaults.headers.common.authorization = `Bearer ${token}`
           localStorage.setItem("token", token)
-    
-          navigate('/')
-      } catch (error) {
+          toast.success("Login feito com sucesso", {
+            autoClose: 1000
+          })
+          setTimeout(() => {
+            navigate("/")
+          }, 500);
+        } catch (error) {
+          toast.error("Email ou senha incorretos", {
+            autoClose: 1000
+          })
           console.error(error)
       }
     }
+
     async function submitRegister(data: RegisterData) {
       try {
         await localAPI.post('/users', { ...data, type: type })
-        navigate('/login')
+        toast.success("Registrado com sucesso", {
+          autoClose: 1000
+        })
+        setTimeout(() => {
+          navigate('/login')
+        }, 500);
       } catch (error) {
+        toast.error("Erro ao realizar o registro", {
+          autoClose: 1000
+        })
         console.error(error)
       }
     }
@@ -76,6 +89,9 @@ interface Props {
         try {
             await localAPI.delete(`/users/${user.id}`)
             localStorage.clear
+            toast.success("Usuário deletado com sucesso", {
+              autoClose: 1000
+            })
             navigate('/')
         } catch (error) {
             console.error(error)

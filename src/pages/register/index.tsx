@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyledRegister } from './style'
 import Header from '../../components/header/index'
 import Footer from '../../components/footer/index'
@@ -18,6 +18,20 @@ const Register = () => {
 	})
 
 	const { submitRegister, setType } = useAuth();
+
+	const [buttonBuyer, setButtonBuyer] = useState('button-brand');
+	const [buttonAdvertiser, setButtonAdvertiser] = useState('button-white');
+
+	const changeBuyerClass = () => {
+		setType('COMPRADOR')
+		setButtonBuyer('button-brand');
+		setButtonAdvertiser('button-white');
+	}
+	const changeAdvertiserClass = () => {
+		setType('ANUNCIANTE')
+		setButtonBuyer('button-white');
+		setButtonAdvertiser('button-brand');
+	}
 
 	return (
 		<StyledRegister>
@@ -140,16 +154,16 @@ const Register = () => {
 					<p>Tipo de conta</p>
 					<div>
 						<button
-							className='button-brand'
+							className={buttonBuyer}
 							type='button'
-							onClick={() => setType('COMPRADOR')}
+							onClick={changeBuyerClass}
 						>
 							Comprador
 						</button>
 						<button
-							className='button-white'
+							className={buttonAdvertiser}
 							type='button'
-							onClick={() => setType('ANUNCIANTE')}
+							onClick={changeAdvertiserClass}
 						>
 							Anunciante
 						</button>

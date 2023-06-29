@@ -6,34 +6,15 @@ import Input from '../../components/input/index'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginData, loginSchema } from '../../schemas/users.schema'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
-import { localAPI } from '../../services'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema)
     })
-    const { modalPassword, setModalPassword} = useAuth();
-
-    const navigate = useNavigate()
-
-    async function submitLogin(data: LoginData) {
-        console.log(data)
-        try {
-            const response = await localAPI.post("/login", data)
-      
-            const { token } = response.data
-      
-            localAPI.defaults.headers.common.authorization = `Bearer ${token}`
-            localStorage.setItem("@kars_login", token)
-      
-            navigate('/')
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    const { modalPassword, setModalPassword, submitLogin} = useAuth();
 
     return (
         <StyledLogin>

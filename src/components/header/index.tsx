@@ -43,7 +43,8 @@ function Header() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('@kars_login')
+    // const token = localStorage.getItem('@kars_login')
+    const token = localStorage.getItem('token')
     if(token){
       const decodedToken: TokenData = jwtDecode(token)
       if(decodedToken) {
