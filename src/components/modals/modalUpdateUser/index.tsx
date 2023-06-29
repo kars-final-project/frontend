@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import  Input  from "../../input"
 
 function UpdateUserModal() {
-    const { updateUser, setModalUpdateUser } = useAuth();
+    const { updateUser, setModalUpdateUser, submitDelete } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm<iUpdateUser>({
       resolver: zodResolver(updateUserSchema)
     })
@@ -76,7 +76,7 @@ function UpdateUserModal() {
                 <textarea {...register("description")} placeholder="Descrição" name="description" />
                 <div className="modal-buttons">
                     <button type="button" className="cancel-button">Cancelar</button>
-                    <button type="button" className="delete-button">Excluir Perfil</button>
+                    <button type="button" className="delete-button" onClick={submitDelete}>Excluir Perfil</button>
                     <button type="submit" className="save-button">Salvar alterações</button>
                 </div>
                 </form>

@@ -1,10 +1,11 @@
 import Footer from '../../components/footer/index'
 import Header from '../../components/header/index'
 import { StyledSection, StyledBack, StyledUser, StyledImgCircle, StyledRow, StyledH2, StyledH3, StyledP, StyledAddAdBtn } from './styles'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AdsContext } from '../../contexts/ads.context'
 import { NewAdModal } from '../../components/modals/newAdModal'
 import UpdateUserModal from '../../components/modals/modalUpdateUser'
+import { SellerAdsList } from '../../components/SellerAdsList'
 
 const Dashboard = () => {
 	const { sellerAds, getSellerAds, showNewAdForm, setShowNewAdState } =

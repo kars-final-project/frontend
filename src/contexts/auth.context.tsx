@@ -76,6 +76,7 @@ interface Props {
         try {
             await localAPI.delete(`/users/${user.id}`)
             localStorage.clear
+            navigate('/')
         } catch (error) {
             console.error(error)
         }
