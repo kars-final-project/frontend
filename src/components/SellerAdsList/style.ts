@@ -8,12 +8,12 @@ export const StyledList = styled.ul`
 
 	li {
 		display: flex;
-		flex-direction: column;
-		width: 312px;
-		min-width: 280px;
-		gap: 10px;
-		height: 360px;
-		flex-basis: calc(32.33% - 20px);
+       flex-direction: column;
+       justify-content: space-between;
+       width: 312px; 
+       min-width: 280px;
+       gap: 10px;
+       flex-basis: calc(32.33% - 20px);
 	}
 
 	h3 {
@@ -29,6 +29,7 @@ export const StyledList = styled.ul`
 		width: 100%;
 		height: 152px;
 		background-color: var(--color-grey-7);
+		object-fit: cover;
 	}
 
 	.car-description {
@@ -43,6 +44,20 @@ export const StyledList = styled.ul`
 		font-size: 0.875rem;
 		line-height: 24px;
 		color: var(--color-grey-2);
+	}
+
+	.edit-details-button {
+		display: flex;
+		width: 100%;
+		gap: 20px;
+	}
+
+	.edit-details-button button {
+		padding: 5px 10px;
+		background-color: var(--color-white-fixed);
+		cursor: pointer;
+		border: 1px solid var(--color-grey-1);
+		border-radius: 4px;
 	}
 
 	.user-info {
@@ -84,8 +99,7 @@ export const StyledList = styled.ul`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 51px;
-		height: 32px;
+		padding: 5px 10px;
 		background-color: var(--color-brand-4);
 		font-family: 'Inter';
 		font-style: normal;

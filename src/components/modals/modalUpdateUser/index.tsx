@@ -13,7 +13,7 @@ function UpdateUserModal() {
   
     const submit: SubmitHandler<iUpdateUser> = (data) => {
       //passar o id do usuario como segundo parametro
-      updateUser(data, "2")
+      updateUser(data, "1")
     }
   
     return (

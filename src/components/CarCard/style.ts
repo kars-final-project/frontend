@@ -85,7 +85,7 @@ const StyledCards = styled.ul `
        display: flex;
        align-items: center;
        justify-content: center;
-       width: 51px;
+       padding: 10px;
        height: 32px;
        background-color: var(--color-brand-4);
        font-family: 'Inter';
