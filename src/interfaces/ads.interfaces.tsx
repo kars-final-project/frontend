@@ -101,6 +101,10 @@ export interface iAdValues {
 	setFilterKm: React.Dispatch<React.SetStateAction<string>>
 	filterPrice: string
 	setFilterPrice: React.Dispatch<React.SetStateAction<string>>
+	showModalEditAd: boolean
+	setShowModalEditAd: React.Dispatch<React.SetStateAction<boolean>>
+	adData: any
+	setAdData: React.Dispatch<React.SetStateAction<any>>
 }
 
 
