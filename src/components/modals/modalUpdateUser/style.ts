@@ -16,12 +16,14 @@ const StyledModalUpdateUser = styled.div `
         display: flex;
         flex-direction: column;
         background-color: var(--color-white-fixed);
-        width: 520px;
+        width: 550px;
         gap: 25px;
         top: 80px;
         max-width: 100%;
         padding: 25px 30px;
         border-radius: 8px;
+        max-height: 95%;
+        overflow-y: auto;
     }
 
     .modal-box > h3 {
@@ -129,6 +131,7 @@ const StyledModalUpdateUser = styled.div `
         font-size: 1rem;
         background-color: var(--color-brand-1);
         color: var(--color-white-fixed);
+        border-radius: 4px;
     }
 `
 

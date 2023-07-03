@@ -9,14 +9,8 @@ import { useAuth } from "../../contexts/auth.context";
 import OpenHeader from "../OpenHeader";
 import UpdateUserModal from "../modals/modalUpdateUser";
 import ModalEditAddress from "../modals/modalEditAddress";
+import { TokenData } from "../../interfaces/user.interface";
 
-interface TokenData extends JwtPayload {
-  type: string;
-  email: string;
-  iat: number;
-  exp: number;
-  sub: string;
-}
 
 function Header() {
   const [showContainer, setShowContainer] = useState(false);
@@ -27,25 +21,8 @@ function Header() {
 
   const { modalUpdateUser, modalUpdateAddress } = useAuth();
   const [showUser, setShowUser] = useState(false);
-  const { user, setUser } = useAuth();
-  const [nameInitial, setNameInitial] = useState("");
+  const { user, setUser, getUserData, nameInitial } = useAuth();
   const [showOpenHeader, setShowOpenHeader] = useState(false);
-
-  async function getUserData(id: number) {
-    try {
-      const response = await localAPI.get(`users/${id}`);
-      setUser(response.data);
-      getNameInitial(response.data.name);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  function getNameInitial(name: string) {
-    const initial = name.split(" ").map((word) => word.charAt(0));
-    const initialString = initial.join("").toUpperCase();
-    setNameInitial(initialString);
-  }
 
   useEffect(() => {
     const token = localStorage.getItem("@kars_login");
