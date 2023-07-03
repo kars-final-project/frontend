@@ -2,7 +2,7 @@ import React from 'react'
 import { iInput } from './interface'
 import { StyledFieldset } from './style'
 
-const Input = ({ id, label, register, placeholder, type, disabled, error }: iInput) => {
+const Input = ({ id, label, register, placeholder, type, disabled, error, defaultValue }: iInput) => {
   return (
     <StyledFieldset>
         <label htmlFor={id}>{label}</label>
@@ -12,6 +12,7 @@ const Input = ({ id, label, register, placeholder, type, disabled, error }: iInp
             type={type} 
             disabled={disabled}
             {...register}
+            defaultValue={defaultValue}
         />
         <small>{error}</small>
     </StyledFieldset>

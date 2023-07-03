@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const StyledModalUpdateUser = styled.div `
+const StyledModalUpdateAdvertisement = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@ const StyledModalUpdateUser = styled.div `
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 1;
+    padding: 20px 0;
 
     .modal-box {
         display: flex;
@@ -22,6 +22,8 @@ const StyledModalUpdateUser = styled.div `
         max-width: 100%;
         padding: 25px 30px;
         border-radius: 8px;
+        overflow-x: auto;
+        max-height: 100%;
     }
 
     .modal-box > h3 {
@@ -98,6 +100,7 @@ const StyledModalUpdateUser = styled.div `
     .modal-buttons {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
     }
 
     .cancel-button {
@@ -111,18 +114,18 @@ const StyledModalUpdateUser = styled.div `
     }
 
     .delete-button {
-        width: 150px;
+        width: 60%;
         height: 48px;
         border-radius: 4px;
-        background-color: var(--color-alert-2);
+        background-color: var(--color-grey-6);
         font-family: "Inter";
         font-weight: 600;
         font-size: 1rem;
-        color: var(--color-alert-1);
+        color: var(--color-grey-1);
     }
 
     .save-button {
-        width: 150px;
+        width: 40%;
         height: 48px;
         font-family: "Inter";
         font-weight: 600;
@@ -130,6 +133,26 @@ const StyledModalUpdateUser = styled.div `
         background-color: var(--color-brand-1);
         color: var(--color-white-fixed);
     }
+
+    .div-input {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .button-yes {
+        width: 100%;
+        height: 48px;
+        background-color: var(--color-white-fixed);
+        border: 1px solid var(--color-grey-4);
+    }
+
+    .button-no {
+        width: 100%;
+        height: 48px;
+        background-color: var(--color-brand-1);
+        color: var(--color-white-fixed);
+    }
 `
 
-export default StyledModalUpdateUser
+export default StyledModalUpdateAdvertisement

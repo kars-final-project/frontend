@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const StyledSection = styled.section`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  flex-wrap: wrap;
   position: relative;
 
   main {
-    margin: 10px 0;
+    margin: 100px 0;
     width: 100vw;
     display: flex;
     gap: 15px;

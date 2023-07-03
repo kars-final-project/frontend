@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form"
 
-type tRegister = "name" | "email" | "phone" | "password" | "cpf" | "birthday" | "description" | "type" | "zip_code" | "state" | "city" | "street" | "number" | "complement" | "confirmPassword"
+type tRegister = "name" | "email" | "phone" | "password" | "cpf" | "birthday" | "description" | "type" | "zip_code" | "state" | "city" | "street" | "number" | "complement" | "confirmPassword" | "brand" | "model" | "year" | "fuel" | "mileage" | "color" | "fipe_list_price" | "price" | "cover_image" | "gallery_image_1" | "gallery_image_2"
 
 
 export interface iInput {
@@ -11,4 +11,5 @@ export interface iInput {
     disabled: boolean
     register:  UseFormRegisterReturn<tRegister>
     error?: string
+    defaultValue?: string
 }

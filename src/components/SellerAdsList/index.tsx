@@ -10,20 +10,8 @@ export const SellerAdsList = () => {
 	getSellerAds()
 	return (
 		<StyledList>
-			{sellerAds.map((ad: iAd) => {
-				return <SoloAdCard
-					brand={ad.brand}
-					price={ad.price}
-					fuel={ad.fuel}
-					model={ad.model}
-					description={ad.description}
-					cover_image={ad.cover_image}
-					mileage={ad.mileage}
-					color={ad.color}
-					year={ad.year}
-					fipe_list_price={ad.fipe_list_price}
-					is_active={true}
-				/>
+			{sellerAds.map((ad: any) => {
+				return <SoloAdCard ad={ad}/>
 			})}
 		</StyledList>
 	)
