@@ -33,6 +33,8 @@ interface authProviderData {
   submitRegister(data: RegisterData): Promise<void>;
   setType: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
+  getUserData: (id: number) => void;
+  nameInitial: string;
 }
 
 export interface UserData {
@@ -55,8 +57,25 @@ function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<UserData | null>(null);
   const [type, setType] = useState("COMPRADOR");
   const [loading, setLoading] = useState(false);
+  const [nameInitial, setNameInitial] = useState("");
 
   const navigate = useNavigate();
+
+  function getNameInitial(name: string) {
+    const initial = name.split(" ").map((word) => word.charAt(0));
+    const initialString = initial.join("").toUpperCase();
+    setNameInitial(initialString);
+  }
+
+  async function getUserData(id: number) {
+    try {
+      const response = await localAPI.get(`users/${id}`);
+      setUser(response.data);
+      getNameInitial(response.data.name);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function submitLogin(data: LoginData) {
     console.log(data);
@@ -192,6 +211,8 @@ function AuthProvider({ children }: Props) {
         loading,
         modalUpdateAddress,
         setModalUpdateAddress,
+        getUserData,
+        nameInitial,
       }}
     >
       {children}

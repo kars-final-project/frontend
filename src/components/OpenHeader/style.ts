@@ -18,12 +18,14 @@ export const StyledOpenHeader = styled.div `
         width: 100%;
     }
 
-    .div-buttons button {
+    .div-buttons button, .button {
         background: none;
         border-bottom: 1px solid var(--color-grey-4);
         padding: 20px 0;
         width: 100%;
         cursor: pointer;
+        text-align: center;
+        color: black;
     }
 `
 

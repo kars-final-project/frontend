@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { loginSchema, responseUserSchema } from '../schemas/users.schema'
 import { ReactNode, Dispatch, SetStateAction } from 'react'
 import { iLogin } from './login.interfaces'
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 export type iUser = z.infer<typeof loginSchema>
 export type iUserReturn = z.infer<typeof responseUserSchema>
@@ -27,3 +28,11 @@ export interface iUserResponse {
 	type: string,
 	reset_token: string | null
 }
+
+export interface TokenData extends JwtPayload {
+	type: string;
+	email: string;
+	iat: number;
+	exp: number;
+	sub: string;
+  }
