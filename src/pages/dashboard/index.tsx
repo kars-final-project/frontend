@@ -40,7 +40,7 @@ const Dashboard = () => {
 			</main>
 			{showNewAdForm && <NewAdModal />}
 			<Footer />
-			< UpdateUserModal/>
+			{/* < UpdateUserModal/> */}
 		</StyledSection>
 	)
 }

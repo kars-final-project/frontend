@@ -7,6 +7,7 @@ import {
 	iYear,
 } from '../interfaces/ads.interfaces'
 import { iFilterFunctions, iFilterProps } from '../interfaces/ads.interfaces'
+import { karsAPI } from '../services/index'
 
 export const FilterContext = createContext<iFilterFunctions>(
 	{} as iFilterFunctions,
@@ -29,6 +30,9 @@ export const FilterProvider = ({ children }: iFilterProps) => {
 	const [maxKm, setMaxKm] = useState<number | null>(null)
 	const [minPrice, setMinPrice] = useState<number | null>(null)
 	const [maxPrice, setMaxPrice] = useState<number | null>(null)
+
+	const [brandList, setBrandList] = useState<iBrand[]>([])
+
 
 	const selectBrand = (brand: iBrand | null): void => {
 		if (brand) {
