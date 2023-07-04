@@ -32,6 +32,7 @@ interface authProviderData {
   submitLogin(data: LoginData): Promise<void>;
   submitRegister(data: RegisterData): Promise<void>;
   setType: React.Dispatch<React.SetStateAction<string>>;
+  type: string;
   loading: boolean;
   getUserData: (id: number) => void;
   nameInitial: string;
@@ -208,6 +209,7 @@ function AuthProvider({ children }: Props) {
         submitLogin,
         submitRegister,
         setType,
+        type,
         loading,
         modalUpdateAddress,
         setModalUpdateAddress,

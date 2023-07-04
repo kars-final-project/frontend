@@ -17,7 +17,7 @@ const Register = () => {
 		resolver: zodResolver(registerSchema),
 	})
 
-	const { submitRegister, setType } = useAuth();
+	const { submitRegister, setType, type } = useAuth();
 
 	return (
 		<StyledRegister>
@@ -140,16 +140,18 @@ const Register = () => {
 					<p>Tipo de conta</p>
 					<div>
 						<button
-							className='button-brand'
+							className={`${type === 'COMPRADOR' ? 'button-brand' : 'button-white'} `}
 							type='button'
-							onClick={() => setType('COMPRADOR')}
+							onClick={() => {setType('COMPRADOR')
+						console.log(type)}}
 						>
 							Comprador
 						</button>
 						<button
-							className='button-white'
+							className={`${type === 'ANUNCIANTE' ? 'button-brand' : 'button-white'} `}
 							type='button'
-							onClick={() => setType('ANUNCIANTE')}
+							onClick={() => {setType('ANUNCIANTE')
+						console.log(type)}}
 						>
 							Anunciante
 						</button>
