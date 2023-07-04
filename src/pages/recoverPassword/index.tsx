@@ -26,7 +26,6 @@ function RecoverPassword() {
   const token = params.token;
 
   const submit: SubmitHandler<iPasswordRecovery> = (data) => {
-    console.log(data);
     passwordRecovery(data, token as string);
   };
 

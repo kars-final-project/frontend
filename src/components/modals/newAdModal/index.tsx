@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AdsContext } from '../../../contexts/ads.context'
 import Input from '../../inputForAd/index'
 import { StyledForm } from './styles'
@@ -6,9 +6,13 @@ import { useForm } from 'react-hook-form'
 import { sellerCarAdSchema } from '../../../schemas/ads.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { iSellerAd } from '../../../interfaces/ads.interfaces'
+import { carsAPI } from '../../../services'
+import SelectBrand from '../../../components/select/selectBrand'
+import SelectModel from '../../../components/select/selectModel'
+import { model } from '../../../components/select/selectModel/interface'
 
 export const NewAdModal = () => {
-	const { setShowNewAdState, createAd, getSellerAds } = useContext(AdsContext)
+	const { setShowNewAdState, createAd, getSellerAds, selectedOptionBrand, selectedOptionModel } = useContext(AdsContext)
 
 	const {
 		register,
@@ -21,6 +25,69 @@ export const NewAdModal = () => {
 		setShowNewAdState()
 		getSellerAds()
 	}
+
+	const [brands, setBrands] = useState<string[]>([])
+	
+    const getBrands = async () => {
+		try {
+			const response = await carsAPI.get('/cars')
+			const allBrands = Object.keys(response.data).map((brand) => brand)
+			setBrands(allBrands)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+	
+	interface model {
+		id: string
+		name: string
+		brand: string
+		year: string
+		fuel: number
+		value: number
+	}
+
+	const [models, setModels] = useState<model[]>([])
+	const [valueFipe, setValueFipe] = useState<model[]>([])
+
+    const getModels = async () => {
+		try {
+			const response = await carsAPI.get(`/cars?brand=${selectedOptionBrand}`)
+			const allModels = response.data.map((model: model) => model)
+			setModels(allModels)
+			console.log(response.data)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+    const getValueFipe = async () => {
+		try {
+			const response = await carsAPI.get(`/cars?brand=${selectedOptionBrand}`)
+			const filterValueFipe = response.data.filter((model: model) => model.name == selectedOptionModel)
+			setValueFipe(filterValueFipe)
+			console.log(filterValueFipe)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	// useEffect(() => {
+	// 	getValueFipe()
+	// }, [valueFipe])
+
+	useEffect(() => {
+		getBrands()
+		getModels()
+		getValueFipe()
+	},[selectedOptionBrand])
+
+	// function valueFipeFunc() {
+	// 	if (valueFipe[0].value !== 0){
+	// 		return valueFipe[0].value.toString()
+	// 	}
+	// 	return '0'
+	// }
 
 	return (
 		<div>
@@ -35,7 +102,7 @@ export const NewAdModal = () => {
 
 				<div className='divInputs'>
 					<h3>Informações do veículo:</h3>
-					<Input
+					{/* <Input
 						id='brand'
 						type='text'
 						placeholder='Mercedez-Benz'
@@ -46,8 +113,10 @@ export const NewAdModal = () => {
 						<span className='alert-span'>
 							{errors.brand.message}
 						</span>
-					)}
-					<Input
+					)} */}
+					<SelectBrand options={brands} label='Marca'/>
+					<SelectModel options={models} label='Modelo'/>
+					{/* <Input
 						id='model'
 						type='text'
 						placeholder='A 200 CGI ADVANCE SEDAN'
@@ -58,7 +127,7 @@ export const NewAdModal = () => {
 						<span className='alert-span'>
 							{errors.model.message}
 						</span>
-					)}
+					)} */}
 					<div className='divTwoInputs'>
 						<Input
 							id='year'
@@ -117,6 +186,7 @@ export const NewAdModal = () => {
 						<Input
 							id='fipe_list_price'
 							type='text'
+							// placeholder={valueFipe[0].value.toString()}
 							placeholder='48000'
 							label='Preço tabela FIPE'
 							register={register('fipe_list_price')}
