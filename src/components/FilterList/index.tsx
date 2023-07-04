@@ -23,6 +23,7 @@ function FilterList({ showFilter, closeModal }: iFilterListProps) {
     setFilterFuel,
     filterModel,
     setFilterModel,
+    sellerAds,
   } = useContext(AdsContext);
 
   const handleClickBrand = (value: string) => {
@@ -101,100 +102,42 @@ function FilterList({ showFilter, closeModal }: iFilterListProps) {
     }
   };
 
+  const brands: string[] = [...new Set(sellerAds.map((obj) => obj.brand))];
+  const adsFilteredBrand = sellerAds.filter(
+    (item) =>
+      filterBrand.length === 0 || filterBrand.includes(item.brand.toLowerCase())
+  );
+
+  const models: string[] = [
+    ...new Set(adsFilteredBrand.map((obj) => obj.model)),
+  ];
+
   return (
     <StyledFilterList showFilter={showFilter}>
       <section>
         <h2>Marca</h2>
         <div>
-          <button
-            onClick={() => handleClickBrand("generalMotors")}
-            className={filterBrand.includes("generalMotors") ? "selected" : ""}
-          >
-            General Motors
-          </button>
-          <button
-            onClick={() => handleClickBrand("fiat")}
-            className={filterBrand.includes("fiat") ? "selected" : ""}
-          >
-            Fiat
-          </button>
-          <button
-            onClick={() => handleClickBrand("ford")}
-            className={filterBrand.includes("ford") ? "selected" : ""}
-          >
-            Ford
-          </button>
-          <button
-            onClick={() => handleClickBrand("honda")}
-            className={filterBrand.includes("honda") ? "selected" : ""}
-          >
-            Honda
-          </button>
-          <button
-            onClick={() => handleClickBrand("porsche")}
-            className={filterBrand.includes("porsche") ? "selected" : ""}
-          >
-            Porsche
-          </button>
-          <button
-            onClick={() => handleClickBrand("volswagen")}
-            className={filterBrand.includes("volswagen") ? "selected" : ""}
-          >
-            Volswagen
-          </button>
+          {brands.map((brand) => (
+            <button
+              onClick={() => handleClickBrand(brand)}
+              className={filterBrand.includes(brand) ? "selected" : ""}
+            >
+              {brand}
+            </button>
+          ))}
         </div>
       </section>
       <section>
         <h2>Modelo</h2>
         <div>
-          <button
-            onClick={() => handleClickModel("civic")}
-            className={filterModel.includes("civic") ? "selected" : ""}
-          >
-            Civic
-          </button>
-          <button
-            onClick={() => handleClickModel("corolla")}
-            className={filterModel.includes("corolla") ? "selected" : ""}
-          >
-            Corolla
-          </button>
-          <button
-            onClick={() => handleClickModel("cruze")}
-            className={filterModel.includes("cruze") ? "selected" : ""}
-          >
-            Cruze
-          </button>
-          <button
-            onClick={() => handleClickModel("fit")}
-            className={filterModel.includes("fit") ? "selected" : ""}
-          >
-            Fit
-          </button>
-          <button
-            onClick={() => handleClickModel("gol")}
-            className={filterModel.includes("gol") ? "selected" : ""}
-          >
-            Gol
-          </button>
-          <button
-            onClick={() => handleClickModel("ka")}
-            className={filterModel.includes("ka") ? "selected" : ""}
-          >
-            Ka
-          </button>
-          <button
-            onClick={() => handleClickModel("onix")}
-            className={filterModel.includes("onix") ? "selected" : ""}
-          >
-            Onix
-          </button>
-          <button
-            onClick={() => handleClickModel("porsche 718")}
-            className={filterModel.includes("porsche 718") ? "selected" : ""}
-          >
-            Porsche 718
-          </button>
+          {models.map((model) => (
+            <button
+              onClick={() => handleClickModel(model)}
+              className={filterModel.includes(model) ? "selected" : ""}
+            >
+              {model}
+            </button>
+          ))}
         </div>
       </section>
       <section>
