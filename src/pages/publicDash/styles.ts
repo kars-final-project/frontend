@@ -122,6 +122,7 @@ export const StyledP = styled.p`
 export const StyledRow = styled.div`
   display: flex;
   flex-direction: row;
+  text-align: center;
   gap: 8px;
 `
 

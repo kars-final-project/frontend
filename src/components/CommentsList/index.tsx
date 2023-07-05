@@ -2,9 +2,14 @@ import { StyledComments } from './style'
 import { useEffect, useState } from 'react'
 import { localAPI } from '../../services/index'
 import { SoloComment } from '../SoloComment'
+import { useParams } from 'react-router-dom'
 
 const CommentsList = () => {
     const [ commentsArray, setCommentsArray] = useState<any[]>([])
+
+	const params = useParams()
+
+	const productId = params.id
 
     useEffect(() => {
         getProductComments()
@@ -12,7 +17,7 @@ const CommentsList = () => {
 
     const getProductComments = async () => {
         try {
-            const response = await localAPI.get<any>("comments")
+            const response = await localAPI.get<any>(`comments/commentsByAd/${productId}`)
             setCommentsArray(response.data)
 			console.log(response.data)
         }
