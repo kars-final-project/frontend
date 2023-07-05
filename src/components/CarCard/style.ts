@@ -14,6 +14,7 @@ const StyledCards = styled.ul `
        min-width: 280px;
        gap: 10px;
        flex-basis: calc(32.33% - 20px);
+       cursor: pointer;
    }
 
    h3 {

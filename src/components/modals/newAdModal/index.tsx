@@ -38,35 +38,35 @@ export const NewAdModal = () => {
 					</div>
 					<div className='divInputs'>
 						<h3>Informações do veículo:</h3>
-						{/* <Input
+						<Input
 							id='brand'
 							type='text'
 							placeholder='Mercedez-Benz'
 							label='Marca'
 							register={register('brand')}
-						/> */}
-						<label htmlFor="">Marca</label>
+						/>
+						{/* <label htmlFor="">Marca</label>
 						<select name="" id="">
 							{brandList.map((brand, index) => {
 								return <option value={brand} key={index} onClick={() => getModel(brand)}>{brand}</option>
 							})}
-						</select>
+						</select> */}
 						{errors.brand && (
 							<span className='alert-span'>
 								{errors.brand.message}
 							</span>
 						)}
-						{/* <Input
+						<Input
 							id='model'
 							type='text'
 							placeholder='A 200 CGI ADVANCE SEDAN'
 							label='Modelo'
 							register={register('model')}
-						/> */}
-						<label htmlFor="">Model</label>
+						/>
+						{/* <label htmlFor="">Model</label>
 						{modelList.map((model)=> {
 							return <option value={model.name} key={model.id}>{model.name}</option>
-						})}
+						})} */}
 						{errors.model && (
 							<span className='alert-span'>
 								{errors.model.message}

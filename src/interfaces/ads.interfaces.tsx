@@ -88,14 +88,12 @@ export interface iModel {
 
 export interface iAdValues {
   showNewAdForm: boolean;
-  brands: any;
-  setBrands: any;
   allAdsArray: iAd[];
   getAllAdsArray: () => void;
-  adsById: unknown;
-  getAdsById: unknown;
-  sellerAds: iAd[];
-  setSellerAds: any;
+  adsById: iSellerAd;
+  setAdsById:React.Dispatch<React.SetStateAction<iSellerAd>>;
+  getAdsById: (id: string) => void;
+  sellerAds: iSellerAd[];
   getSellerAds: () => void;
   createAd: any;
   updateAd: any;
@@ -120,12 +118,6 @@ export interface iAdValues {
   setShowModalEditAd: React.Dispatch<React.SetStateAction<boolean>>;
   adData: any;
   setAdData: React.Dispatch<React.SetStateAction<any>>;
-  selectedOptionBrand: any;
-  setSelectedOptionBrand: any;
-  selectedOptionModel: any;
-  setSelectedOptionModel: any;
-  showEditAddressModal: boolean;
-  setShowEditAddressModal: any;
 }
 
 export interface iFilterFunctions {

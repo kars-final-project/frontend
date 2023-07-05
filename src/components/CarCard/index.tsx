@@ -1,10 +1,15 @@
 import { useAuth } from "../../contexts/auth.context";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import StyledCards from "./style";
 import { localAPI } from "../../services";
+import { AdsContext } from "../../contexts/ads.context"
+import { iAd } from "interfaces/ads.interfaces";
+import { useNavigate } from "react-router-dom";
 
 function CarCard({ ads }: any) {
   const [users, setUsers] = useState<any>([])
+  const { getAdsById } = useContext(AdsContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getUsers() {
@@ -25,7 +30,7 @@ function CarCard({ ads }: any) {
 
   return (
     <StyledCards>
-      {ads.map((ad: any, index: number) => {
+ {ads.map((ad: any, index: number) => {
         const user = users.find((user: any) => user.id === ad.user_id)
 
         return (
