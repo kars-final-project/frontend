@@ -43,7 +43,7 @@ const Dashboard = () => {
     }
     getSellerAds()
   }, []);
-  
+  getSellerAds();
   return (
     <StyledSection>
       <div>
