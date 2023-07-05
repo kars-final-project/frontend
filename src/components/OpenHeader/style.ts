@@ -30,4 +30,3 @@ export const StyledOpenHeader = styled.div `
         color: black;
     }
 `
-

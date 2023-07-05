@@ -21,6 +21,10 @@ export const StyledFieldset = styled.fieldset`
         padding: 1rem 1.5rem;
     }
 
+    small {
+      color: var(--color-alert-1);
+    }
+
     @media (min-width: 938px) {
         
     }

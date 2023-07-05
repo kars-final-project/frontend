@@ -30,14 +30,11 @@ function CarCard({ ads }: any) {
 
   return (
     <StyledCards>
-      {ads.map((ad: iAd) => {
+ {ads.map((ad: any, index: number) => {
         const user = users.find((user: any) => user.id === ad.user_id)
 
         return (
-          <li onClick={() => {
-            getAdsById(ad.id)
-            navigate(`/product/${ad.id}`)
-          }}>
+          <li key={index}>
             <img className="car-image" src={ad.cover_image} alt="Imagem do carro" />
             <h3>{ad.model}</h3>
             <p className="car-description">

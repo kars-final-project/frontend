@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyledLogin } from './style'
 import Header from '../../components/header/index'
 import Footer from '../../components/footer/index'
@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
 import { localAPI } from '../../services'
+import { NewAdModal } from '../../components/modals/newAdModal'
+import { AdsContext } from '../../contexts/ads.context'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
@@ -17,10 +19,11 @@ const Login = () => {
     })
     const { modalPassword, setModalPassword} = useAuth();
 
+    const { showNewAdForm, setShowNewAdState} = useContext(AdsContext)
+
     const navigate = useNavigate()
 
     async function submitLogin(data: LoginData) {
-        console.log(data)
         try {
             const response = await localAPI.post("/login", data)
       
@@ -72,6 +75,7 @@ const Login = () => {
                 </form>
             </div>
             {modalPassword && <ModalPassword/>}
+            {showNewAdForm && <NewAdModal />}
         <Footer />
         </StyledLogin>
     )
