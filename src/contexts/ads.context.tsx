@@ -5,7 +5,7 @@ import {
   iAdValues,
   iAdsProps,
 } from "../interfaces/ads.interfaces";
-import { localAPI } from "../services/index";
+import { carsAPI, localAPI } from "../services/index";
 import { toast } from "react-toastify";
 
 export const AdsContext = createContext({} as iAdValues);
@@ -21,6 +21,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
   const [showNewAdForm, setShowNewAdForm] = useState<boolean>(false);
   const [adData, setAdData] = useState(null);
   const [showModalEditAd, setShowModalEditAd] = useState(false);
+  const [showEditAddressModal, setShowEditAddressModal] = useState<boolean>(false)
 
   const [allAdsArray, setallAdsArray] = useState<iAd[]>([]);
 
@@ -34,7 +35,6 @@ export const AdsProvider = ({ children }: iAdsProps) => {
 
   useEffect(() => {
     getAllAdsArray();
-    getSellerAds();
   }, []);
 
   const getAllAdsArray = async () => {
@@ -150,6 +150,10 @@ export const AdsProvider = ({ children }: iAdsProps) => {
     }
   };
 
+  const [brands, setBrands] = useState<string[]>([])
+  const [selectedOptionBrand, setSelectedOptionBrand] = useState<string>('')
+  const [selectedOptionModel, setSelectedOptionModel] = useState<string>('')
+
   return (
     <AdsContext.Provider
       value={{
@@ -183,6 +187,14 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         setShowModalEditAd,
         adData,
         setAdData,
+        brands,
+        setBrands,
+        selectedOptionBrand,
+        setSelectedOptionBrand,
+        selectedOptionModel,
+        setSelectedOptionModel,
+        showEditAddressModal,
+        setShowEditAddressModal
       }}
     >
       {children}

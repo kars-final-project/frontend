@@ -17,7 +17,7 @@ import { useParams } from 'react-router-dom'
 import ModalEditAddress from '../../components/modals/modalEditAddress/index'
 
 const PublicDashboard = () => {
-	const { sellerAds, getSellerAds } = useContext(AdsContext)
+	const { sellerAds, getSellerAds, showEditAddressModal } = useContext(AdsContext)
 
 	const params = useParams()
 
@@ -53,7 +53,7 @@ const PublicDashboard = () => {
 					)}
 				</div>
 			</main>
-			<ModalEditAddress/>
+			{showEditAddressModal && <ModalEditAddress/>}
 			<Footer />
 		</StyledSection>
 	)

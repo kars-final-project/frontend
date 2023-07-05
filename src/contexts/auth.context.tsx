@@ -7,7 +7,7 @@ import {
   LoginData,
   RegisterData,
   iUpdateAddress,
-} from "schemas/users.schema";
+} from "../schemas/users.schema";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
