@@ -9,7 +9,7 @@ import { AdsContext } from "../../contexts/ads.context";
 
 function Home() {
   const {
-    sellerAds,
+    allAdsArray,
     filterBrand,
     filterColor,
     filterYear,
@@ -20,7 +20,7 @@ function Home() {
   } = useContext(AdsContext);
   const [showFilter, setShowFilter] = useState(false);
 
-  let adsFitlered = sellerAds.filter(
+  let adsFitlered = allAdsArray.filter(
     (item) =>
       (filterBrand.length === 0 ||
         filterBrand.includes(item.brand.toLowerCase())) &&

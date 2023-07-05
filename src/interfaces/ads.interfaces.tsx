@@ -118,6 +118,14 @@ export interface iAdValues {
   setShowModalEditAd: React.Dispatch<React.SetStateAction<boolean>>;
   adData: any;
   setAdData: React.Dispatch<React.SetStateAction<any>>;
+  brands: string[]
+  setBrands: React.Dispatch<React.SetStateAction<string[]>>
+  selectedOptionBrand: string
+  setSelectedOptionBrand: React.Dispatch<React.SetStateAction<string>>
+  selectedOptionModel: string
+  setSelectedOptionModel: React.Dispatch<React.SetStateAction<string>>
+  showEditAddressModal: boolean
+  setShowEditAddressModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iFilterFunctions {
