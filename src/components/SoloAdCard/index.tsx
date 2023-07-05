@@ -24,7 +24,7 @@ export const SoloAdCard = ({ ad }: any) => {
 						src='user-image'
 						alt=''
 					/>
-					<h4>Samuel Leão</h4>
+					<h4>{ 'Samuel Leão' }</h4>
 				</div>
 				<div className='more-info'>
 					<div>

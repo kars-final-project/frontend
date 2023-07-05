@@ -95,6 +95,7 @@ export interface iAdValues {
   adsById: unknown;
   getAdsById: unknown;
   sellerAds: iAd[];
+  setSellerAds: any;
   getSellerAds: () => void;
   createAd: any;
   updateAd: any;

@@ -15,13 +15,30 @@ import { AdsContext } from '../../contexts/ads.context'
 import { SellerAdsList } from '../../components/SellerAdsList'
 import { useParams } from 'react-router-dom'
 import ModalEditAddress from '../../components/modals/modalEditAddress/index'
+import { localAPI } from '../../services'
+import { useState } from 'react'
 
 const PublicDashboard = () => {
-	const { sellerAds, getSellerAds, showEditAddressModal } = useContext(AdsContext)
+	const { showEditAddressModal } = useContext(AdsContext)
+	const [ publicAds, setPublicAds ] = useState([])
 
 	const params = useParams()
 
-	const id = params.id
+	const userId = params.id
+
+	useEffect(() => {
+		getPublicSellerAds(userId)
+	}, [])
+
+	const getPublicSellerAds = async (id: any) => {
+		try {
+			const response = await localAPI.get(`advertisements/byUserId/${id}`)
+			setPublicAds(response.data)
+		}
+		catch (error){
+			console.error('Erro ao obter anúncios', error)
+		}
+	}
 
 	return (
 		<StyledSection>
@@ -44,7 +61,7 @@ const PublicDashboard = () => {
 			</div>
 			<main>
 				<div className='divAdvertisement'>
-					{sellerAds.length === 0 ? (
+					{publicAds.length === 0 ? (
 						<StyledRow>
 							<h3> Esta conta ainda não criou anúncios </h3>
 						</StyledRow>
