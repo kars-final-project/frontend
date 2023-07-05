@@ -23,7 +23,7 @@ function FilterList({ showFilter, closeModal }: iFilterListProps) {
     setFilterFuel,
     filterModel,
     setFilterModel,
-    sellerAds,
+    allAdsArray,
   } = useContext(AdsContext);
 
   const handleClickBrand = (value: string) => {
@@ -102,8 +102,8 @@ function FilterList({ showFilter, closeModal }: iFilterListProps) {
     }
   };
 
-  const brands: string[] = [...new Set(sellerAds.map((obj) => obj.brand))];
-  const adsFilteredBrand = sellerAds.filter(
+  const brands: string[] = [...new Set(allAdsArray.map((obj) => obj.brand))];
+  const adsFilteredBrand = allAdsArray.filter(
     (item) =>
       filterBrand.length === 0 || filterBrand.includes(item.brand.toLowerCase())
   );

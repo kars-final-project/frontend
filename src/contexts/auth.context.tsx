@@ -35,6 +35,8 @@ interface authProviderData {
   type: string;
   loading: boolean;
   getUserData: (id: number) => void;
+  userAd: UserData ;
+  setUserAd: React.Dispatch<React.SetStateAction<UserData>>
   nameInitial: string;
 }
 
@@ -56,6 +58,7 @@ function AuthProvider({ children }: Props) {
   const [modalUpdateUser, setModalUpdateUser] = useState(false);
   const [modalUpdateAddress, setModalUpdateAddress] = useState(false);
   const [user, setUser] = useState<UserData | null>(null);
+  const [userAd, setUserAd] = useState<UserData>({} as UserData)
   const [type, setType] = useState("COMPRADOR");
   const [loading, setLoading] = useState(false);
   const [nameInitial, setNameInitial] = useState("");
@@ -103,9 +106,20 @@ function AuthProvider({ children }: Props) {
   }
 
   async function submitDelete() {
+    const token = localStorage.getItem("@kars_login");
+    
     try {
-      await localAPI.delete(`/users/${user?.id}`);
-      localStorage.clear;
+      await localAPI.delete(`/users/${user?.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      localStorage.clear();
+      toast.success("Usuario deletado com sucesso", {
+        autoClose: 1000,
+      });
+      setModalUpdateUser(false);
+      setUser(null);
     } catch (error) {
       console.error(error);
     }
@@ -215,6 +229,8 @@ function AuthProvider({ children }: Props) {
         setModalUpdateAddress,
         getUserData,
         nameInitial,
+        userAd,
+        setUserAd
       }}
     >
       {children}
