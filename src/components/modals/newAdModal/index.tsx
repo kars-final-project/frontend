@@ -33,8 +33,8 @@ export const NewAdModal = () => {
 	},[selectedOptionBrand])
 
 	return (
-		<div>
-			<StyledForm
+		<StyledNewAdModal>
+			<form
 				noValidate
 				onSubmit={handleSubmit(onSubmit)}
 			>
@@ -226,8 +226,8 @@ export const NewAdModal = () => {
 							</button>
 						</div>
 					</div>
+					</div>
 				</form>
-			</div>
-		</StyledNewAdModal>
+			</StyledNewAdModal>
 	)
 }
