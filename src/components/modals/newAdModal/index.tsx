@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AdsContext } from '../../../contexts/ads.context'
 import Input from '../../inputForAd/index'
 import { StyledNewAdModal } from './styles'
@@ -6,10 +6,12 @@ import { useForm } from 'react-hook-form'
 import { sellerCarAdSchema } from '../../../schemas/ads.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { iSellerAd } from '../../../interfaces/ads.interfaces'
+import SelectBrand from '../../../components/select/selectBrand'
+import SelectModel from '../../../components/select/selectModel'
 import { useFilter } from '../../../contexts/filter.context'
 
 export const NewAdModal = () => {
-	const { setShowNewAdState, createAd, getSellerAds } = useContext(AdsContext)
+	const { setShowNewAdState, createAd, getSellerAds, selectedOptionBrand, getBrands, getModels, brands, models, valueFipe, fuelType } = useContext(AdsContext)
 
 	const {brandList, modelList, setModelList, getModel} = useFilter()
 	
@@ -25,19 +27,27 @@ export const NewAdModal = () => {
 		getSellerAds()
 	}
 
+	useEffect(() => {
+		getBrands()
+		getModels()
+	},[selectedOptionBrand])
+
 	return (
-		<StyledNewAdModal>
-			<div className='modal-ad-container'>
-				<form
-					noValidate
-					onSubmit={handleSubmit(onSubmit)}
-				>
-					<div className='divTitleAndCloseButton'>
-						<h2>Criar anúncio</h2>
-						<button onClick={setShowNewAdState}>X</button>
-					</div>
-					<div className='divInputs'>
-						<h3>Informações do veículo:</h3>
+		<div>
+			<StyledForm
+				noValidate
+				onSubmit={handleSubmit(onSubmit)}
+			>
+				<div className='divTitleAndCloseButton'>
+					<h2>Criar anúncio</h2>
+					<button onClick={setShowNewAdState}>X</button>
+				</div>
+
+				<div className='divInputs'>
+					<h3>Informações do veículo:</h3>
+					<SelectBrand options={brands} label='Marca'/>
+					<SelectModel options={models}  label='Modelo'/>
+					<div className='divTwoInputs'>
 						<Input
 							id='brand'
 							type='text'
@@ -59,9 +69,10 @@ export const NewAdModal = () => {
 						<Input
 							id='model'
 							type='text'
-							placeholder='A 200 CGI ADVANCE SEDAN'
-							label='Modelo'
-							register={register('model')}
+							placeholder={fuelType}
+							label='Combustível'
+							register={register('fuel')}
+							disabled={true}
 						/>
 						{/* <label htmlFor="">Model</label>
 						{modelList.map((model)=> {
@@ -88,9 +99,10 @@ export const NewAdModal = () => {
 							<Input
 								id='fuel'
 								type='text'
-								placeholder='Gasolina / Etanol'
+								placeholder={fuelType}
 								label='Combustível'
 								register={register('fuel')}
+                disabled={true}
 							/>
 							{errors.fuel && (
 								<span className='alert-span'>
@@ -128,7 +140,8 @@ export const NewAdModal = () => {
 							<Input
 								id='fipe_list_price'
 								type='text'
-								placeholder='48000'
+                placeholder={valueFipe.toString()}
+                disabled={true}
 								label='Preço tabela FIPE'
 								register={register('fipe_list_price')}
 							/>

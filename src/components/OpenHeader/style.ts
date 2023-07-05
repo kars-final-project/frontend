@@ -27,4 +27,3 @@ export const StyledOpenHeader = styled.div `
         text-align: center;
         color: black;
     }
-`
