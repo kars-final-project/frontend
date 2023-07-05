@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { carAdData, carAdSchema, responseCarAdData } from '../schemas/ads.schema'
+import { carAdData, carAdSchema, responseCarAdData, responseCarAdSchema } from '../schemas/ads.schema'
 
 export type iAd = z.infer<typeof carAdSchema>
 export type iAdsArray = Array<carAdData>
@@ -150,3 +150,5 @@ export interface iFilterFunctions {
 export interface iFilterProps {
 	children: React.ReactNode
 }
+
+export type IPartialAd = z.infer<typeof responseCarAdSchema>

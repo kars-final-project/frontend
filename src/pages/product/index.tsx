@@ -1,4 +1,4 @@
-import Comments from "../../components/Comments/index";
+import Comments from "../../components/CommentsList/index";
 import Footer from "../../components/footer/index";
 import Header from "../../components/header/index";
 import { StyledProduct } from "./style";
