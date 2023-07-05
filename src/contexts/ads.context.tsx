@@ -21,6 +21,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
   const [showNewAdForm, setShowNewAdForm] = useState<boolean>(false);
   const [adData, setAdData] = useState(null);
   const [showModalEditAd, setShowModalEditAd] = useState(false);
+  const [showEditAddressModal, setShowEditAddressModal] = useState<boolean>(false)
 
   const [allAdsArray, setallAdsArray] = useState<iAd[]>([]);
 
@@ -34,7 +35,6 @@ export const AdsProvider = ({ children }: iAdsProps) => {
 
   useEffect(() => {
     getAllAdsArray();
-    getSellerAds();
   }, []);
 
   const getAllAdsArray = async () => {
@@ -188,10 +188,13 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         adData,
         setAdData,
         brands,
+        setBrands,
         selectedOptionBrand,
         setSelectedOptionBrand,
         selectedOptionModel,
-        setSelectedOptionModel
+        setSelectedOptionModel,
+        showEditAddressModal,
+        setShowEditAddressModal
       }}
     >
       {children}

@@ -30,6 +30,7 @@ export const registerSchema = z.object({
 	street: z.string().nonempty('Rua é obrigatória'),
 	number: z.string().nonempty('Número é obrigatório'),
 	complement: z.string().nonempty('Complemento é obrigatório'),
+	user_image: z.string().nonempty('Avatar é obrigatório')
 })
 
 export const updateUserSchema = z.object({

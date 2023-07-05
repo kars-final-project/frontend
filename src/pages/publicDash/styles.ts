@@ -121,8 +121,9 @@ export const StyledP = styled.p`
 
 export const StyledRow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
+  align-itens: center;
   gap: 8px;
 `
 

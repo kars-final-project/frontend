@@ -19,7 +19,6 @@ const CommentsList = () => {
         try {
             const response = await localAPI.get<any>(`comments/commentsByAd/${productId}`)
             setCommentsArray(response.data)
-			console.log(response.data)
         }
         catch (error) {
             console.error("Erro ao obter comentários", error)
