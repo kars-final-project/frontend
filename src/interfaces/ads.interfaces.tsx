@@ -90,9 +90,10 @@ export interface iAdValues {
   showNewAdForm: boolean;
   allAdsArray: iAd[];
   getAllAdsArray: () => void;
-  adsById: unknown;
-  getAdsById: unknown;
-  sellerAds: iAd[];
+  adsById: iSellerAd;
+  setAdsById:React.Dispatch<React.SetStateAction<iSellerAd>>;
+  getAdsById: (id: string) => void;
+  sellerAds: iSellerAd[];
   getSellerAds: () => void;
   createAd: any;
   updateAd: any;

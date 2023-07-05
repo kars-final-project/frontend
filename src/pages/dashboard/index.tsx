@@ -31,7 +31,7 @@ const Dashboard = () => {
     adData,
   } = useContext(AdsContext);
 
-  const { user, getUserData } = useAuth();
+  const { user, getUserData, nameInitial } = useAuth();
 
   useEffect(() => {
     const token = localStorage.getItem("@kars_login");
@@ -49,16 +49,15 @@ const Dashboard = () => {
         <Header />
         <StyledBack />
         <StyledUser>
-          <StyledImgCircle />
+          <StyledImgCircle>
+            {nameInitial}
+          </StyledImgCircle>
           <StyledRow>
             <StyledH2> {user?.name} </StyledH2>
             <StyledH3> {user?.type} </StyledH3>
           </StyledRow>
           <StyledP>
-            {" "}
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s{" "}
+            {user?.description}
           </StyledP>
           <StyledAddAdBtn onClick={setShowNewAdState}>
             {" "}

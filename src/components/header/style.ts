@@ -30,7 +30,7 @@ background-color: var(--color-grey-10);
     gap: 20%;
     align-items: center;
     padding: 0 20px;
-    position: ${ props => props.user ? "static" : "absolute" };
+    position:"absolute" ;
     top: 80px;
     left: 0;
     background-color: var(--color-white-fixed);
@@ -88,7 +88,7 @@ background-color: var(--color-grey-10);
     .container-go-login {
         display: flex;
         gap: 44px;
-        position: static;
+        position: "absolute" ;
         height: 100%;
         justify-content: center;
         padding-left: 44px;

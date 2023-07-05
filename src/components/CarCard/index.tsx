@@ -1,10 +1,15 @@
 import { useAuth } from "../../contexts/auth.context";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import StyledCards from "./style";
 import { localAPI } from "../../services";
+import { AdsContext } from "../../contexts/ads.context"
+import { iAd } from "interfaces/ads.interfaces";
+import { useNavigate } from "react-router-dom";
 
 function CarCard({ ads }: any) {
   const [users, setUsers] = useState<any>([])
+  const { getAdsById } = useContext(AdsContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getUsers() {
@@ -25,11 +30,14 @@ function CarCard({ ads }: any) {
 
   return (
     <StyledCards>
-      {ads.map((ad: any) => {
+      {ads.map((ad: iAd) => {
         const user = users.find((user: any) => user.id === ad.user_id)
 
         return (
-          <li>
+          <li onClick={() => {
+            getAdsById(ad.id)
+            navigate(`/product/${ad.id}`)
+          }}>
             <img className="car-image" src={ad.cover_image} alt="Imagem do carro" />
             <h3>{ad.model}</h3>
             <p className="car-description">

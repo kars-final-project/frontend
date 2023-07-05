@@ -11,6 +11,8 @@ export const StyledOpenHeader = styled.div `
     right: 0;
     max-width: 100%;
     background-color: var(--color-white-fixed);
+    z-index: 10;
+   
 
     .div-buttons {
         display: flex;
