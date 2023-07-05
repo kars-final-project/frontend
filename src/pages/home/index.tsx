@@ -24,14 +24,13 @@ function Home() {
     (item) =>
       (filterBrand.length === 0 ||
         filterBrand.includes(item.brand.toLowerCase())) &&
+      (filterModel.length === 0 ||
+        filterModel.includes(item.model.toLowerCase())) &&
       (filterYear.length === 0 ||
         filterYear.includes(item.year.toLowerCase())) &&
       (filterColor.length === 0 ||
         filterColor.includes(item.color.toLowerCase())) &&
-      (filterFuel.length === 0 ||
-        filterFuel.includes(item.fuel.toLowerCase())) &&
-      (filterModel.length === 0 ||
-        filterModel.includes(item.model.toLowerCase()))
+      (filterFuel.length === 0 || filterFuel.includes(item.fuel.toLowerCase()))
   );
 
   if (filterKm === "min") {
@@ -66,7 +65,10 @@ function Home() {
         <p>A melhor plataforma de anúncios de carros do país</p>
       </div>
       <div className="cards-filters">
-        <FilterList closeModal={closeFilter} showFilter={false} />
+        <FilterList
+          closeModal={closeFilter}
+          showFilter={false}
+        />
         <div className="card-container">
           {adsFitlered.length !== 0 ? (
             <CarCard ads={adsFitlered} />
