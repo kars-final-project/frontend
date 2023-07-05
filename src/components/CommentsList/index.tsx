@@ -13,7 +13,7 @@ const CommentsList = () => {
 
     useEffect(() => {
         getProductComments()
-    }, [])
+    }, [commentsArray])
 
     const getProductComments = async () => {
         try {
