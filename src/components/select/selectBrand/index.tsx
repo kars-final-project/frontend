@@ -7,7 +7,6 @@ const SelectBrand: React.FC<Props> = ({ options, label }) => {
     const { selectedOptionBrand, setSelectedOptionBrand } = useContext(AdsContext)
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        console.log(event.target.value)
         setSelectedOptionBrand(event.target.value)
     }
 

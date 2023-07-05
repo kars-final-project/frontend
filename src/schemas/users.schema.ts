@@ -41,6 +41,15 @@ export const updateUserSchema = z.object({
 	description: z.string().nonempty("Este campo não pode esta vazio")
 })
 
+export const updateAddressSchema = z.object({
+	zip_code: z.string().optional(),
+	state: z.string().optional(),
+	city: z.string().optional(),
+	street: z.string().optional(),
+	number: z.string().optional(),
+	complement: z.string().optional(),
+})
+
 export const sendEmailSchema = z.object({
 	email: z
 		.string()
@@ -56,6 +65,8 @@ export const passwordRecoverySchema = z.object({
     message: 'As senhas não correspondem',
     path: ['confirmPassword']
 });
+
+export type iUpdateAddress = z.infer<typeof updateAddressSchema>
 
 export type iUpdateUser = z.infer<typeof updateUserSchema>
 

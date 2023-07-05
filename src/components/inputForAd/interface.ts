@@ -19,8 +19,9 @@ type tRegister =
 export interface iInput {
 	id: string
 	label: string
-	placeholder: string
+	placeholder: string | undefined
 	type: string
 	register: UseFormRegisterReturn<tRegister>
 	error?: string
+	disabled?: boolean
 }

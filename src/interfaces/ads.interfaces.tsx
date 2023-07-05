@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { carAdData, carAdSchema, responseCarAdData } from '../schemas/ads.schema'
+import { model } from '../components/select/selectModel/interface'
 
 export type iAd = z.infer<typeof carAdSchema>
 export type iAdsArray = Array<carAdData>
@@ -27,22 +28,22 @@ export type iAdStatus = {
 }
 
 
-interface model {
+interface iName {
 	name: string;
 }
 
 export interface iData {
-	chevrolet: model[];
-	citroën: model[];
-	fiat: model[];
-	ford: model[];
-	honda: model[];
-	hyundai: model[];
-	nissan: model[];
-	peugeot: model[];
-	renault: model[];
-	toyota: model[];
-	volkswagen: model[];
+	chevrolet: iName[];
+	citroën: iName[];
+	fiat: iName[];
+	ford: iName[];
+	honda: iName[];
+	hyundai: iName[];
+	nissan: iName[];
+	peugeot: iName[];
+	renault: iName[];
+	toyota: iName[];
+	volkswagen: iName[];
 }
 
 export interface iBrand {
@@ -110,6 +111,14 @@ export interface iAdValues {
 	setSelectedOptionBrand: React.Dispatch<React.SetStateAction<string>>
 	selectedOptionModel: string
 	setSelectedOptionModel: React.Dispatch<React.SetStateAction<string>>
+	getBrands: () => Promise<void>
+	getModels: () => Promise<void>
+	models: model[]
+	valueFipe: number
+	setValueFipe: React.Dispatch<React.SetStateAction<number>>
+	getValueFipe: () => Promise<void>
+	fuelType: string
+	setFuelType: React.Dispatch<React.SetStateAction<string>>
 }
 
 

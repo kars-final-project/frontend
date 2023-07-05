@@ -10,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
 import { localAPI } from '../../services'
-import { NewAdModal } from '../../components/modals/newAdModal'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
@@ -72,7 +71,6 @@ const Login = () => {
                 </form>
             </div>
             {modalPassword && <ModalPassword/>}
-            <NewAdModal />
         <Footer />
         </StyledLogin>
     )
