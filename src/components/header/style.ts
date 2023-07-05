@@ -1,7 +1,9 @@
+import { UserData } from "../../contexts/auth.context";
 import styled from "styled-components";
 
 interface iPropsStyled {
     showContainer: boolean
+    user: UserData | null;
 }
 
 export const StyledHeader = styled.header <iPropsStyled>`
@@ -14,7 +16,6 @@ z-index: 0;
 position: relative;
 top: 0px;
 background-color: var(--color-grey-10);
-
 .more-button {
     border: none;
     cursor: pointer;
@@ -22,18 +23,19 @@ background-color: var(--color-grey-10);
 }
 
 .container-go-login{
-    height: 100px;
+    height: ${ props => props.user ? "0" : "100px" };
     width: 100%;
-    display: ${ props => props.showContainer? "flex" : "none" };
+    display: ${ props => props.user ? "flex" : props.showContainer ? "flex" : "none" };
     justify-content: center;
     gap: 20%;
     align-items: center;
     padding: 0 20px;
-    position: absolute;
+    position:"absolute" ;
     top: 80px;
     left: 0;
     background-color: var(--color-white-fixed);
     z-index: 1;
+    max-width: 100%;
     button{
         border: 1.5px solid var(--color-grey-4);
         border-radius: 4px;
@@ -86,7 +88,7 @@ background-color: var(--color-grey-10);
     .container-go-login {
         display: flex;
         gap: 44px;
-        position: static;
+        position: "absolute" ;
         height: 100%;
         justify-content: center;
         padding-left: 44px;

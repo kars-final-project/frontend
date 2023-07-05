@@ -1,14 +1,26 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+export const StyledNewAdModal = styled.div`
+width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  .modal-ad-container {
+    background-color: white;
+  position: relative;
+  max-height: 90%;
+  /* transform: translate(-50%, -50%); */
   border-radius: 8px;
   overflow-y: scroll;
-  z-index: 10;
+  padding: 18px 24px;
+  }
 
   .divTitleAndCloseButton {
     display: flex;
@@ -20,9 +32,13 @@ export const StyledForm = styled.form`
       font-size: 15pt;
     }
   }
-
+ h2{
+  font-size: 16px;
+    font-weight: 500;
+ }
   h3 {
-    margin: 0 0 0 10px;
+    font-size: 14px;
+    font-weight: 500;
     align-self: flex-start;
   }
 
@@ -105,9 +121,8 @@ export const StyledForm = styled.form`
     }
   }
 
-
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     width: 30vw;
-  }
+  } */
 
 `

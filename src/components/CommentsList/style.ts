@@ -44,24 +44,29 @@ export const StyledComments = styled.section `
 
     .user-info {
         display: flex;
-        align-items: center;
+        align-items: start;
         gap: 10px;
     }
 
-    .user-info img {
+    .row-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .row-div img {
         width: 32px;
         height: 32px;
         background-color: var(--color-random-1);
-        border-radius: 150px;
+        border-radius: 50%;
     }
 
-    .user-info span {
-        width: 4px;
-        height: 4px;
-        background: var(--color-grey-5);
+    .comment-span {
+        border-radius: 50%;
     }
 
-    .user-info h3 {
+    .row-div h3 {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
@@ -69,12 +74,23 @@ export const StyledComments = styled.section `
         color: var(--color-grey-1);
     }
 
-    .user-info p {
+    .date-info {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
         color: var(--color-grey-3);
+    }
+
+    .comment-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        color: var(--color-grey-2);
+        text-align: start;
+        margin-left: 2px;
+        margin-top: 12px;
     }
 
     .add-comment {

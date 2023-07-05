@@ -4,6 +4,7 @@ import {
   iAdStatus,
   iAdValues,
   iAdsProps,
+  iSellerAd,
 } from "../interfaces/ads.interfaces";
 import { carsAPI, localAPI } from "../services/index";
 import { toast } from "react-toastify";
@@ -22,12 +23,29 @@ export const AdsProvider = ({ children }: iAdsProps) => {
   const [showNewAdForm, setShowNewAdForm] = useState<boolean>(false);
   const [adData, setAdData] = useState(null);
   const [showModalEditAd, setShowModalEditAd] = useState(false);
+  const [showEditAddressModal, setShowEditAddressModal] = useState<boolean>(false)
 
   const [allAdsArray, setallAdsArray] = useState<iAd[]>([]);
 
-  const [adsById, setAdsById] = useState<iAd>();
+  const [adsById, setAdsById] = useState<iSellerAd>({
+    id: "",
+    user_id: "",
+    brand: "",
+    model: "",
+    fuel: "",
+    mileage: "",
+    color: "",
+    description: "",
+    year: "",
+    fipe_list_price: "",
+    price: "",
+    is_active: true,
+    cover_image: "",
+    gallery_image_1: "",
+    gallery_image_2: ""
+  });
 
-  const [sellerAds, setSellerAds] = useState<Array<iAd>>([]);
+  const [sellerAds, setSellerAds] = useState<Array<iSellerAd>>([]);
 
   const setShowNewAdState = () => {
     setShowNewAdForm((prevState) => !prevState);
@@ -35,7 +53,6 @@ export const AdsProvider = ({ children }: iAdsProps) => {
 
   useEffect(() => {
     getAllAdsArray();
-    getSellerAds();
   }, []);
 
   const getAllAdsArray = async () => {
@@ -47,12 +64,12 @@ export const AdsProvider = ({ children }: iAdsProps) => {
     }
   };
 
-  const getAdsById = async (id: number) => {
+  const getAdsById = async (id: string | undefined) => {
     try {
       const jwtToken = localStorage.getItem("@kars_login");
       if (!jwtToken) return;
 
-      const response = await localAPI.get<iAd>(`advertisements/${id}`, {
+      const response = await localAPI.get<iSellerAd>(`advertisements/${id}`, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
@@ -65,7 +82,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
 
   const getSellerAds = async () => {
     try {
-      const response = await localAPI.get<iAd[]>(`advertisements`);
+      const response = await localAPI.get<iSellerAd[]>(`advertisements`);
       setSellerAds(response.data);
     } catch (error) {
       console.error("Erro ao obter os anúncios", error);
@@ -196,6 +213,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         allAdsArray,
         getAllAdsArray,
         adsById,
+        setAdsById,
         getAdsById,
         sellerAds,
         getSellerAds,
@@ -223,6 +241,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         adData,
         setAdData,
         brands,
+        setBrands,
         selectedOptionBrand,
         setSelectedOptionBrand,
         selectedOptionModel,
@@ -234,7 +253,9 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         setValueFipe,
         getValueFipe,
         fuelType,
-        setFuelType
+        setFuelType,
+        showEditAddressModal,
+        setShowEditAddressModal
       }}
     >
       {children}

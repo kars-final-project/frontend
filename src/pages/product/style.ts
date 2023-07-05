@@ -97,6 +97,7 @@ export const StyledProduct = styled.main`
     background-color: var(--color-brand-1);
     border-radius: 4px;
     padding: 12px 20px;
+    text-align: center;
   }
   .description-product {
     background-color: var(--color-grey-10);
@@ -125,6 +126,7 @@ export const StyledProduct = styled.main`
     border-radius: 4px;
     padding: 36px 44px;
     width: 100%;
+    z-index: 0;
     h2 {
       font-weight: 600;
       font-size: 20px;

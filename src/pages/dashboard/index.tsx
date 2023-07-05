@@ -17,6 +17,9 @@ import { NewAdModal } from "../../components/modals/newAdModal";
 import UpdateUserModal from "../../components/modals/modalUpdateUser";
 import { SellerAdsList } from "../../components/SellerAdsList";
 import UpdateAdvertisementModal from "../../components/modals/modalUpdateAdvertisement";
+import { useAuth } from "../../contexts/auth.context";
+import { TokenData } from "../../interfaces/user.interface";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 const Dashboard = () => {
   const {
@@ -25,9 +28,21 @@ const Dashboard = () => {
     showNewAdForm,
     setShowNewAdState,
     showModalEditAd,
-    adData
+    adData,
   } = useContext(AdsContext);
 
+  const { user, getUserData, nameInitial } = useAuth();
+
+  useEffect(() => {
+    const token = localStorage.getItem("@kars_login");
+    if (token) {
+      const decodedToken: TokenData = jwtDecode(token);
+      if (decodedToken) {
+        getUserData(+decodedToken.sub);
+      }
+    }
+    getSellerAds()
+  }, []);
   getSellerAds();
   return (
     <StyledSection>
@@ -35,16 +50,15 @@ const Dashboard = () => {
         <Header />
         <StyledBack />
         <StyledUser>
-          <StyledImgCircle />
+          <StyledImgCircle>
+            {nameInitial}
+          </StyledImgCircle>
           <StyledRow>
-            <StyledH2> Samuel Leão </StyledH2>
-            <StyledH3> Anunciante </StyledH3>
+            <StyledH2> {user?.name} </StyledH2>
+            <StyledH3> {user?.type} </StyledH3>
           </StyledRow>
           <StyledP>
-            {" "}
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s{" "}
+            {user?.description}
           </StyledP>
           <StyledAddAdBtn onClick={setShowNewAdState}>
             {" "}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyledLogin } from './style'
 import Header from '../../components/header/index'
 import Footer from '../../components/footer/index'
@@ -10,12 +10,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth.context'
 import ModalPassword from '../../components/modals/modalPassword/index'
 import { localAPI } from '../../services'
+import { NewAdModal } from '../../components/modals/newAdModal'
+import { AdsContext } from '../../contexts/ads.context'
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
         resolver: zodResolver(loginSchema)
     })
     const { modalPassword, setModalPassword} = useAuth();
+
+    const { showNewAdForm, setShowNewAdState} = useContext(AdsContext)
 
     const navigate = useNavigate()
 
@@ -71,6 +75,7 @@ const Login = () => {
                 </form>
             </div>
             {modalPassword && <ModalPassword/>}
+            {showNewAdForm && <NewAdModal />}
         <Footer />
         </StyledLogin>
     )

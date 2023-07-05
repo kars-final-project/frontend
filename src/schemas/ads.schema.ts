@@ -1,6 +1,8 @@
 import { z } from 'zod'
 
 export const carAdSchema = z.object({
+	id: z.string(),
+	user_id: z.string(),
 	brand: z.string().min(3).max(125),
 	model: z.string().max(125),
 	fuel: z.string().max(125),
@@ -11,7 +13,7 @@ export const carAdSchema = z.object({
 	fipe_list_price: z.string(),
 	price: z.string(),
 	is_active: z.boolean().optional().default(true),
-	cover_image: z.string(),
+	cover_image: z.string()
 })
 
 export const sellerCarAdSchema = carAdSchema

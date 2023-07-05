@@ -1,12 +1,51 @@
-import Comments from "../../components/Comments/index";
+import Comments from "../../components/CommentsList/index";
 import Footer from "../../components/footer/index";
 import Header from "../../components/header/index";
 import { StyledProduct } from "./style";
-import MockProduct from './product.png'
-import SmallImg from './smallcar.png'
-import UserImg from './userImg.png'
+import UserImg from "./userImg.png";
+import { AdsContext } from "../../contexts/ads.context";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { localAPI } from "../../services/index";
+import { iSellerAd } from "interfaces/ads.interfaces";
+import { useAuth } from "../../contexts/auth.context";
 
 function Product() {
+  const { adsById, getAdsById, setAdsById } = useContext(AdsContext);
+  const { user, userAd, setUserAd } = useAuth();
+  const { id } = useParams();
+  useEffect(() => {
+    const getAdsById = async (id: string | undefined) => {
+      try {
+        const jwtToken = localStorage.getItem("@kars_login");
+        if (!jwtToken) return;
+
+        const response = await localAPI.get<iSellerAd>(`advertisements/${id}`, {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        });
+        setAdsById(response.data);
+      } catch (error) {
+        console.error("Erro ao obter o anúncio", error);
+      }
+    };
+
+    getAdsById(id!);
+  }, []);
+
+  useEffect(() => {
+    async function getUserByIdAd(id: number | string ) {
+      try {
+        const response = await localAPI.get(`users/${id}`);
+        setUserAd(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getUserByIdAd(adsById.user_id);
+  }, [adsById]);
+
   return (
     <StyledProduct>
       <Header />
@@ -14,42 +53,49 @@ function Product() {
         <div className="upperDiv">
           <div className="product-container">
             <div className="product-main-img-container">
-              <img src={MockProduct} alt="" />
+              <img src={adsById.cover_image} alt="" />
             </div>
             <div className="product-info">
-              <h2>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </h2>
+              <h2>{adsById.model} </h2>
               <div className="buttons-price">
                 <div className="car-buttons">
                   <div>
-                    <button>2013</button>
-                    <button>0 KM</button>
+                    <button>{adsById.year}</button>
+                    <button>{`${adsById.mileage} KM`}</button>
                   </div>
-                  <button className="buy-button">Comprar</button>
+                  {user && (
+                    <a
+                      target="_blank"
+                      href={`https://api.whatsapp.com/send?phone=+5585${userAd.phone}&text=Vi seu anuncio e tenho interesse em comprar seu carro`}
+                      className="buy-button"
+                    >
+                      Comprar
+                    </a>
+                  )}
                 </div>
-                <p>R$ 00.000,00</p>
+                <p>{`R$ ${adsById.price}`}</p>
               </div>
             </div>
             <div className="description-product">
               <h2>Descrição</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+              <p>{adsById.description}</p>
             </div>
           </div>
           <div className="pictures-user">
             <div className="car-pictures">
               <h2>Fotos</h2>
               <div>
-                <img src={SmallImg} alt="" />
-                <img src={SmallImg} alt="" />
-                <img src={SmallImg} alt="" />
-                <img src={SmallImg} alt="" />
-                <img src={SmallImg} alt="" />
-                <img src={SmallImg} alt="" />
+                <img src={adsById.gallery_image_1} alt="" />
+                <img src={adsById.gallery_image_2} alt="" />
               </div>
             </div>
             <div className="user-info">
               <img src={UserImg} alt="" />
               <h3>Samuel Leão</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's
+              </p>
               <button>Ver todos anuncios</button>
             </div>
           </div>

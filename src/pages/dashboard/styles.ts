@@ -9,6 +9,7 @@ export const StyledSection = styled.section`
   height: 100vh;
   position: relative;
 
+
   main {
     margin: 100px 0;
     width: 100vw;
@@ -24,14 +25,14 @@ export const StyledBack = styled.div`
 `
 
 export const StyledUser = styled.div`
-  position: absolute;
+  /* position: absolute; */
   box-sizing: border-box;
   width: clamp(360px, 80vw, 1600px);
   padding: 32px;
   padding-top: 40px;
   padding-bottom: 36px;
   background: var(--color-grey-9);
-  top: 200px;
+  top: 150px;
   left: 0;
   right: 0;
   margin: auto;
@@ -39,6 +40,8 @@ export const StyledUser = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  z-index: 0;
+  margin-top: -220px;
 `
 
 export const StyledImgCircle = styled.div`
@@ -46,6 +49,12 @@ export const StyledImgCircle = styled.div`
   height: 104px;
   border-radius: 50%;
   background: var(--color-brand-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: 500;
+  color: white;
 `
 
 export const StyledH2 = styled.h2`
@@ -60,7 +69,7 @@ export const StyledH3 = styled.h3`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background: var(--color-grey-4);
+  background: var( --color-brand-4);
   font-size: 14px;
   font-family: Inter;
   font-weight: 500;
@@ -78,19 +87,17 @@ export const StyledP = styled.p`
 
 export const StyledRow = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 8px;
+  align-items: center;
+  gap: 9px;
 `
 
 export const StyledAddAdBtn = styled.button`
   height: 48px;
-  width: 160px;
+  width: 170px;
   padding: 12px 28px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
   border-radius: 4px;
   border: 1.5px solid var(--color-brand-1);
-  background: none;
   color: var(--color-brand-1);
+  font-size: 16px;
+  font-weight: 600;
 `
