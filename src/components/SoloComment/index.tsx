@@ -20,7 +20,7 @@ export const SoloComment = ({ comment }: any) => {
         <li>
             <div className="user-info">
                 <div className="row-div">
-                    <img src="" alt="" />
+                    <img src={comment.user_image} alt="" />
                     <h3>{comment.user.name}</h3>
                     <span className="comment-span"> ● </span>
                     <p className="date-info">{message}</p>

@@ -59,7 +59,7 @@ export const StyledComments = styled.section `
         width: 32px;
         height: 32px;
         background-color: var(--color-random-1);
-        border-radius: 150px;
+        border-radius: 50%;
     }
 
     .comment-span {
