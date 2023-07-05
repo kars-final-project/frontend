@@ -34,7 +34,7 @@ export const SoloComment = ({ comment }: any) => {
 					<h3>{comment.user.name}</h3>
 					<span className='comment-span'> ● </span>
 					<p className='date-info'>{message}</p>
-					<button onClick={changeEditCommentModalState}> Editar </button>
+					<button onClick={(e) => {e.preventDefault(); changeEditCommentModalState()}}> Editar </button>
 				</div>
 				<p className='comment-text'>{comment.comment}</p>
 			</div>

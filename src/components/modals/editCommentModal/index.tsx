@@ -1,5 +1,4 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { useState } from 'react'
 import { localAPI } from '../../../services'
 import { z } from 'zod'
 // por algum motivo o commentId está entrando como um objeto
@@ -7,23 +6,10 @@ import { z } from 'zod'
 // desta forma => onClick={deletePost(commentId.commentId)}
 // não consegui descobrir pq ainda
 // a função delete está funcionando, mas é preciso atualizar a page pra ver que o comentário foi removido
+// a função update também funciona e tem o mesmo problema, é preciso atualizar a page para ver a mudança
 
 export const EditComment = (commentId: number) => {
-	interface iFormComment {
-		comment: string
-	}
-
-	const editFormSchema = z.object({
-		comment: z.string(),
-	})
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<iFormComment>({
-		resolver: zodResolver(editFormSchema),
-	})
+	const [ editText, setEditText ] = useState<string>('')
 
     const deletePost = async (commentId: number) => {
         try {
@@ -33,6 +19,18 @@ export const EditComment = (commentId: number) => {
             console.log('Não foi possível excluir o comentário', error)
         }
     }
+
+	const updatePost = async (commentId: number, comment: string) => {
+		try {
+			const data = {
+				comment: comment
+			}
+			await localAPI.patch(`comments/${commentId}`, data)
+		}
+		catch (error){
+			console.error('Erro ao atualizar o comentário', error)
+		}
+	}
 
 	return (
 		<>
@@ -44,11 +42,21 @@ export const EditComment = (commentId: number) => {
 				<input
 					type='text'
 					name=''
-					id=''
+					id='comment-text'
+					onChange={e => setEditText(e.target.value)}
 				/>
 				<div>
-					<button> Salvar </button>
-					<button > Excluir </button>
+					<button onClick={(e) => {
+						e.preventDefault();
+						console.log(commentId.commentId, editText);
+						updatePost(commentId.commentId, editText);
+
+					}}> Salvar </button>
+					<button onClick={(e) => {
+						e.preventDefault(); 
+						deletePost(commentId.commentId); 
+
+					}}> Excluir </button>
 				</div>
 			</form>
 		</>
