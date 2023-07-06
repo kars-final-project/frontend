@@ -10,11 +10,29 @@ const StyledCards = styled.ul `
        display: flex;
        flex-direction: column;
        justify-content: space-between;
+       position: relative;
        width: 312px; 
        min-width: 280px;
        gap: 10px;
        flex-basis: calc(32.33% - 20px);
        cursor: pointer;
+       z-index: -1;
+   }
+
+   .icon-price {
+      width: 15px;
+      height: 27px;
+      background-color: var(--color-random-7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: "Inter";
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--color-white-fixed);
    }
 
    h3 {

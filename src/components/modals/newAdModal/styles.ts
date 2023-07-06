@@ -103,10 +103,22 @@ width: 100vw;
     }
 
     .buttonSubmit{
-        background-color: #4529E6;
-        color: white;
+        background-color: var(--color-brand-1);
+        color: var(--color-white-fixed);
+        border: 1.5px solid #4529E6;
     }
 
+    button {
+        height: 3rem;
+        padding: 0.75rem 1.75rem;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 0rem;
+        border-radius: 0.25rem;
+        width: 100%;
+    }
   }
 
   /* @media (min-width: 768px) {

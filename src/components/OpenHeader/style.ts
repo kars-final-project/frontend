@@ -10,9 +10,7 @@ export const StyledOpenHeader = styled.div `
     top: 80px;
     right: 0;
     max-width: 100%;
-    background-color: var(--color-white-fixed);
-    z-index: 10;
-   
+    background-color: var(--color-white-fixed); 
 
     .div-buttons {
         display: flex;
@@ -30,4 +28,3 @@ export const StyledOpenHeader = styled.div `
         color: black;
     }
 `
-

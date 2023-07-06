@@ -1,7 +1,8 @@
-import Comments from "../../components/Comments/index";
+import Comments from "../../components/CommentsList/index";
 import Footer from "../../components/footer/index";
 import Header from "../../components/header/index";
 import { StyledProduct } from "./style";
+<<<<<<< HEAD
 import UserImg from './userImg.png'
 import { AdsContext } from "../../contexts/ads.context";
 import { useContext, useEffect } from "react";
@@ -32,6 +33,52 @@ const navigate = useNavigate()
       }, [])
   
       console.log(adsById)
+=======
+import UserImg from "./userImg.png";
+import { AdsContext } from "../../contexts/ads.context";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { localAPI } from "../../services/index";
+import { iSellerAd } from "interfaces/ads.interfaces";
+import { useAuth } from "../../contexts/auth.context";
+
+function Product() {
+  const { adsById, getAdsById, setAdsById } = useContext(AdsContext);
+  const { user, userAd, setUserAd } = useAuth();
+  const { id } = useParams();
+  useEffect(() => {
+    const getAdsById = async (id: string | undefined) => {
+      try {
+        const jwtToken = localStorage.getItem("@kars_login");
+        if (!jwtToken) return;
+
+        const response = await localAPI.get<iSellerAd>(`advertisements/${id}`, {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        });
+        setAdsById(response.data);
+      } catch (error) {
+        console.error("Erro ao obter o anúncio", error);
+      }
+    };
+
+    getAdsById(id!);
+  }, []);
+
+  useEffect(() => {
+    async function getUserByIdAd(id: number | string ) {
+      try {
+        const response = await localAPI.get(`users/${id}`);
+        setUserAd(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getUserByIdAd(adsById.user_id);
+  }, [adsById]);
+
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
   return (
     <StyledProduct>
       <Header />
@@ -49,7 +96,15 @@ const navigate = useNavigate()
                     <button>{adsById.year}</button>
                     <button>{`${adsById.mileage} KM`}</button>
                   </div>
-                  <a target="_blank" href={`https://api.whatsapp.com/send?phone=+5585987016737&text=Ol%C3%A1%2C%20venho%20por%20meio%20do%20seu%20portf%C3%B3lio%20na%20internet%2C%20gostaria%20de%20conhecer%20melhor%20seus%20servi%C3%A7os`} className="buy-button">Comprar</a>
+                  {user && (
+                    <a
+                      target="_blank"
+                      href={`https://api.whatsapp.com/send?phone=+5585${userAd.phone}&text=Vi seu anuncio e tenho interesse em comprar seu carro`}
+                      className="buy-button"
+                    >
+                      Comprar
+                    </a>
+                  )}
                 </div>
                 <p>{`R$ ${adsById.price}`}</p>
               </div>
@@ -68,10 +123,20 @@ const navigate = useNavigate()
               </div>
             </div>
             <div className="user-info">
+<<<<<<< HEAD
               <div>{nameInitial}</div>
               <h3>{user?.name}</h3>
               <p>{user?.description}</p>
               <button onClick={()=> navigate('/dashboard')}>Ver todos anuncios</button>
+=======
+              <img src={UserImg} alt="" />
+              <h3>Samuel Leão</h3>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's
+              </p>
+              <button>Ver todos anuncios</button>
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
             </div>
           </div>
         </div>

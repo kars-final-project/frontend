@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../input";
 
 function UpdateUserModal() {
-  const { updateUser, setModalUpdateUser, user } = useAuth();
+  const { updateUser, setModalUpdateUser, user, submitDelete } = useAuth();
   const {
     register,
     handleSubmit,
@@ -90,10 +90,14 @@ function UpdateUserModal() {
             defaultValue={user?.description}
           />
           <div className="modal-buttons">
-            <button type="button" className="cancel-button">
+            <button
+              onClick={() => setModalUpdateUser(false)}
+              type="button"
+              className="cancel-button"
+            >
               Cancelar
             </button>
-            <button type="button" className="delete-button">
+            <button onClick={submitDelete} type="button" className="delete-button">
               Excluir Perfil
             </button>
             <button type="submit" className="save-button">

@@ -6,9 +6,13 @@ import {
   iAdsProps,
   iSellerAd,
 } from "../interfaces/ads.interfaces";
-import { localAPI } from "../services/index";
+import { carsAPI, localAPI } from "../services/index";
 import { toast } from "react-toastify";
+<<<<<<< HEAD
 import { iUpdateAdvertisement } from "schemas/ads.schema";
+=======
+import { model } from '../components/select/selectModel/interface'
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
 
 export const AdsContext = createContext({} as iAdValues);
 
@@ -23,6 +27,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
   const [showNewAdForm, setShowNewAdForm] = useState<boolean>(false);
   const [adData, setAdData] = useState(null);
   const [showModalEditAd, setShowModalEditAd] = useState(false);
+  const [showEditAddressModal, setShowEditAddressModal] = useState<boolean>(false)
 
   const [allAdsArray, setallAdsArray] = useState<iAd[]>([]);
 
@@ -52,7 +57,6 @@ export const AdsProvider = ({ children }: iAdsProps) => {
 
   useEffect(() => {
     getAllAdsArray();
-    getSellerAds();
   }, []);
 
   const getAllAdsArray = async () => {
@@ -113,7 +117,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
       const jwtToken = localStorage.getItem("@kars_login");
       if (!jwtToken) return;
 
-      const response = await localAPI.patch<iAd>(`advertisements/${id}`, body, {
+      await localAPI.patch<iAd>(`advertisements/${id}`, body, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
@@ -168,6 +172,44 @@ export const AdsProvider = ({ children }: iAdsProps) => {
     }
   };
 
+  const [brands, setBrands] = useState<string[]>([])
+  const [selectedOptionBrand, setSelectedOptionBrand] = useState<string>('')
+  const [selectedOptionModel, setSelectedOptionModel] = useState<string>('')
+	
+  const getBrands = async () => {
+		try {
+			const response = await carsAPI.get('/cars')
+			const allBrands = Object.keys(response.data).map((brand) => brand)
+			setBrands(allBrands)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+  const [models, setModels] = useState<model[]>([])
+  const [valueFipe, setValueFipe] = useState<number>(0)
+  const [fuelType, setFuelType] = useState<string>('')
+
+  const getModels = async () => {
+		try {
+			const response = await carsAPI.get(`/cars?brand=${selectedOptionBrand}`)
+			const allModels = response.data.map((model: model) => model)
+			setModels(allModels)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+  const getValueFipe = async () => {
+		try {
+			const response = await carsAPI.get(`/cars?brand=${selectedOptionBrand}`)
+			const filterValueFipe = response.data.filter((model: model) => model.name == selectedOptionModel)
+			setValueFipe(filterValueFipe[0].value)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
   return (
     <AdsContext.Provider
       value={{
@@ -202,6 +244,22 @@ export const AdsProvider = ({ children }: iAdsProps) => {
         setShowModalEditAd,
         adData,
         setAdData,
+        brands,
+        setBrands,
+        selectedOptionBrand,
+        setSelectedOptionBrand,
+        selectedOptionModel,
+        setSelectedOptionModel,
+        getBrands,
+        getModels,
+        models,
+        valueFipe,
+        setValueFipe,
+        getValueFipe,
+        fuelType,
+        setFuelType,
+        showEditAddressModal,
+        setShowEditAddressModal
       }}
     >
       {children}

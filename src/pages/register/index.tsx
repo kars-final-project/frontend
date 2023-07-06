@@ -80,6 +80,15 @@ const Register = () => {
 						error={errors['description']?.message}
 						disabled={false}
 					/>
+					<Input 
+						id='user_image'
+						label='Avatar'
+						placeholder='link'
+						type='text'
+						register={register('user_image')}
+						error={errors['user_image']?.message}
+						disabled={false}
+					/>
 					<p>Informações de endereço</p>
 					<Input
 						id='zip_code'

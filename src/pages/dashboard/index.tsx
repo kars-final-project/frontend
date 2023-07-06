@@ -41,6 +41,7 @@ const Dashboard = () => {
         getUserData(+decodedToken.sub);
       }
     }
+    getSellerAds()
   }, []);
   getSellerAds();
   return (
