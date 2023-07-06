@@ -8,6 +8,7 @@ import {
 } from "../interfaces/ads.interfaces";
 import { localAPI } from "../services/index";
 import { toast } from "react-toastify";
+import { iUpdateAdvertisement } from "schemas/ads.schema";
 
 export const AdsContext = createContext({} as iAdValues);
 
@@ -107,7 +108,7 @@ export const AdsProvider = ({ children }: iAdsProps) => {
     }
   };
 
-  const updateAd = async (id: number, body: unknown) => {
+  const updateAd = async (id: number, body: iUpdateAdvertisement) => {
     try {
       const jwtToken = localStorage.getItem("@kars_login");
       if (!jwtToken) return;

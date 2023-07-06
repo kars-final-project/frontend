@@ -2,35 +2,29 @@ import Comments from "../../components/Comments/index";
 import Footer from "../../components/footer/index";
 import Header from "../../components/header/index";
 import { StyledProduct } from "./style";
-import MockProduct from './product.png'
-import SmallImg from './smallcar.png'
 import UserImg from './userImg.png'
 import { AdsContext } from "../../contexts/ads.context";
 import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { localAPI } from "../../services/index";
-import { iAd, iSellerAd } from "interfaces/ads.interfaces";
+import { useNavigate, useParams } from "react-router-dom";
+import { TokenData } from "interfaces/user.interface";
+import jwtDecode from "jwt-decode";
+import { useAuth } from "../../contexts/auth.context";
 
 function Product() {
   
-  const {adsById, getAdsById, setAdsById } = useContext(AdsContext)
+  const {adsById, getAdsById } = useContext(AdsContext)
   const {id} = useParams()
+  const {getUserData, user, nameInitial} = useAuth()
+const navigate = useNavigate()
+
   useEffect(()=> {
-    const getAdsById = async (id: string | undefined) => {
-      try {
-        const jwtToken = localStorage.getItem("@kars_login");
-        if (!jwtToken) return;
-  
-        const response = await localAPI.get<iSellerAd>(`advertisements/${id}`, {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
-        });
-        setAdsById(response.data);
-      } catch (error) {
-        console.error("Erro ao obter o anúncio", error);
+    const token = localStorage.getItem("@kars_login");
+    if (token) {
+      const decodedToken: TokenData = jwtDecode(token);
+      if (decodedToken) {
+        getUserData(+decodedToken.sub);
       }
-    };
+    }
     getAdsById(id!)
     console.log(id)
   
@@ -74,10 +68,10 @@ function Product() {
               </div>
             </div>
             <div className="user-info">
-              <img src={UserImg} alt="" />
-              <h3>Samuel Leão</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-              <button>Ver todos anuncios</button>
+              <div>{nameInitial}</div>
+              <h3>{user?.name}</h3>
+              <p>{user?.description}</p>
+              <button onClick={()=> navigate('/dashboard')}>Ver todos anuncios</button>
             </div>
           </div>
         </div>
