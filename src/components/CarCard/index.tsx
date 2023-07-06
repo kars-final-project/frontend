@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { useState, useEffect, useContext } from "react"
+=======
 import { useState, useEffect } from "react";
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
 import StyledCards from "./style";
 import { localAPI } from "../../services";
 
@@ -33,6 +37,31 @@ function CarCard({ ads }: any) {
         const valueBuy = fipeListPrice - fipeListPrice * 0.05;
 
         return (
+<<<<<<< HEAD
+          <a href={`/product/${ad.id}`} onClick={() => {
+            getAdsById(ad.id)
+          }}>
+            <li >
+              <img className="car-image" src={ad.cover_image} alt="Imagem do carro" />
+              <h3>{ad.model}</h3>
+              <p className="car-description">
+                {ad.description}
+              </p>
+              <div className="user-info">
+                <img className="user-image" src="" alt="" />
+                <h4>{user?.name}</h4>
+              </div>
+              <div className="more-info">
+                <div>
+                  <span>{ad.mileage} KM</span>
+                  <span>{ad.year}</span>
+                </div>
+                <p>{Number(ad.price).toLocaleString("pt-br", { style: "currency", currency: "BRL", })}</p>
+              </div>
+            </li>
+          </a>
+        )
+=======
           <li key={index}>
             {ad.price <= valueBuy && <div className="icon-price">$</div>}
             <img
@@ -60,6 +89,7 @@ function CarCard({ ads }: any) {
             </div>
           </li>
         );
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
       })}
     </StyledCards>
   );

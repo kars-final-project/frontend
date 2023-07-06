@@ -154,6 +154,19 @@ export const StyledProduct = styled.main`
     align-items: center;
     gap: 30px;
     padding: 37px 44px;
+
+    div {
+      width: 104px;
+      height: 104px;
+      border-radius: 9.375rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-brand-1);
+      color: var(--color-white-fixed);
+      font-size: 36px;
+    }
+
     img {
       border-radius: 50%;
     }

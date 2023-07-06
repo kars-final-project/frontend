@@ -2,6 +2,38 @@ import Comments from "../../components/CommentsList/index";
 import Footer from "../../components/footer/index";
 import Header from "../../components/header/index";
 import { StyledProduct } from "./style";
+<<<<<<< HEAD
+import UserImg from './userImg.png'
+import { AdsContext } from "../../contexts/ads.context";
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { TokenData } from "interfaces/user.interface";
+import jwtDecode from "jwt-decode";
+import { useAuth } from "../../contexts/auth.context";
+
+function Product() {
+  
+  const {adsById, getAdsById } = useContext(AdsContext)
+  const {id} = useParams()
+  const {getUserData, user, nameInitial} = useAuth()
+const navigate = useNavigate()
+
+  useEffect(()=> {
+    const token = localStorage.getItem("@kars_login");
+    if (token) {
+      const decodedToken: TokenData = jwtDecode(token);
+      if (decodedToken) {
+        getUserData(+decodedToken.sub);
+      }
+    }
+    getAdsById(id!)
+    console.log(id)
+  
+  
+      }, [])
+  
+      console.log(adsById)
+=======
 import UserImg from "./userImg.png";
 import { AdsContext } from "../../contexts/ads.context";
 import { useContext, useEffect } from "react";
@@ -46,6 +78,7 @@ function Product() {
     getUserByIdAd(adsById.user_id);
   }, [adsById]);
 
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
   return (
     <StyledProduct>
       <Header />
@@ -90,6 +123,12 @@ function Product() {
               </div>
             </div>
             <div className="user-info">
+<<<<<<< HEAD
+              <div>{nameInitial}</div>
+              <h3>{user?.name}</h3>
+              <p>{user?.description}</p>
+              <button onClick={()=> navigate('/dashboard')}>Ver todos anuncios</button>
+=======
               <img src={UserImg} alt="" />
               <h3>Samuel Leão</h3>
               <p>
@@ -97,6 +136,7 @@ function Product() {
                 industry. Lorem Ipsum has been the industry's
               </p>
               <button>Ver todos anuncios</button>
+>>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
             </div>
           </div>
         </div>
