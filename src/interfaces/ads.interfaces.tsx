@@ -82,9 +82,9 @@ export interface iAdValues {
 	showNewAdForm: boolean
 	allAdsArray: iAd[]
 	getAllAdsArray: () => void
-	adsById: unknown
-	getAdsById: unknown
-	sellerAds: iAd[]
+	adsById: iSellerAd
+	getAdsById: (id: string | undefined) => void
+	sellerAds: iSellerAd[]
 	getSellerAds: () => void
 	createAd: any
 	updateAd: any
@@ -122,7 +122,9 @@ export interface iAdValues {
 	getValueFipe: () => Promise<void>
 	fuelType: string
 	setFuelType: React.Dispatch<React.SetStateAction<string>>
-    
+}
+
+
 export interface iModel {
   id: string;
   name: string;
@@ -138,7 +140,7 @@ export interface iAdValues {
   getAllAdsArray: () => void;
   adsById: iSellerAd;
   setAdsById:React.Dispatch<React.SetStateAction<iSellerAd>>;
-  getAdsById: (id: string) => void;
+  getAdsById: (id: string | undefined) => void;
   sellerAds: iSellerAd[];
   getSellerAds: () => void;
   createAd: any;

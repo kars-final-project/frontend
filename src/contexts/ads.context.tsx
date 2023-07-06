@@ -8,11 +8,8 @@ import {
 } from "../interfaces/ads.interfaces";
 import { carsAPI, localAPI } from "../services/index";
 import { toast } from "react-toastify";
-<<<<<<< HEAD
 import { iUpdateAdvertisement } from "schemas/ads.schema";
-=======
 import { model } from '../components/select/selectModel/interface'
->>>>>>> 538ac58eb4ed8715a1f5846754e4794b1e409984
 
 export const AdsContext = createContext({} as iAdValues);
 
